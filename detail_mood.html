@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>챗GPT 무드 이미지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#f4f2ec;--ink:#1a1917;--ink2:#4a4845;--ink3:#888480;
+  --accent:#b5502e;--accent-dim:#d4795a;--rule:#d8d5ce;
+  --code-bg:#ede9e0;--step-bg:#fff;
+  --r:8px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+
+/* HEADER */
+.hdr{position:sticky;top:0;z-index:100;background:rgba(244,242,236,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);padding:14px 24px;display:flex;align-items:center;gap:16px}
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.02em;padding:6px 10px;border-radius:6px;transition:background .15s}
+.back:hover{background:var(--rule);color:var(--ink)}
+.back svg{width:14px;height:14px;flex-shrink:0}
+.hdr-title{font-family:'Instrument Serif',serif;font-size:17px;color:var(--ink);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tool-badge{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:#f9e9e4;border:1px solid #e8c4b8;border-radius:20px;padding:3px 10px;white-space:nowrap}
+
+/* HERO */
+.hero{padding:56px 24px 40px;max-width:860px;margin:0 auto}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.hero-title{font-family:'Instrument Serif',serif;font-size:clamp(26px,5vw,38px);line-height:1.25;color:var(--ink);margin-bottom:16px}
+.hero-title em{font-style:italic;color:var(--accent)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.meta-chip{font-size:12px;color:var(--ink2);background:var(--code-bg);border-radius:4px;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.meta-chip strong{color:var(--ink);font-weight:600}
+.hero-desc{font-size:15px;color:var(--ink2);line-height:1.75;max-width:640px}
+
+/* PROCESS OVERVIEW */
+.process{max-width:860px;margin:0 auto;padding:0 24px 48px}
+.process-box{background:var(--ink);color:var(--paper);border-radius:var(--r);padding:24px 28px;font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:2}
+.process-box .label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px}
+.process-step{display:flex;gap:12px;align-items:flex-start;padding:3px 0}
+.process-step .arrow{color:#888;flex-shrink:0;margin-top:2px}
+.process-step .txt{color:#e8e4dc}
+.process-step.active .txt{color:#f4c49e;font-weight:500}
+
+/* SECTIONS */
+.section{max-width:860px;margin:0 auto;padding:0 24px 56px}
+.step-header{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.step-num{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-title{font-family:'Instrument Serif',serif;font-size:22px;color:var(--ink)}
+.step-sub{font-size:14px;color:var(--ink2);margin-top:4px}
+.divider{border:none;border-top:1px solid var(--rule);margin:48px 0}
+
+/* IMAGE PLACEHOLDER */
+.img-ph{background:var(--code-bg);border:1.5px dashed var(--rule);border-radius:var(--r);padding:32px 24px;text-align:center;margin:20px 0;color:var(--ink3);font-size:13px}
+.img-ph .ph-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px;font-family:'JetBrains Mono',monospace}
+.img-ph .ph-name{font-weight:600;color:var(--ink2);margin-bottom:4px}
+.img-ph svg{width:32px;height:32px;opacity:.3;margin-bottom:10px}
+
+/* CONTENT BODY */
+.body-text{font-size:14.5px;color:var(--ink2);line-height:1.8;margin-bottom:16px}
+.body-text strong{color:var(--ink);font-weight:600}
+.body-text em{color:var(--accent);font-style:normal;font-weight:500}
+
+/* PROMPT BLOCK */
+.prompt-wrap{margin:20px 0}
+.prompt-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);font-family:'JetBrains Mono',monospace;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
+.prompt-box{background:#fff;border:1.5px solid var(--rule);border-radius:var(--r);overflow:hidden}
+.prompt-box pre{font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.8;padding:20px 22px;white-space:pre-wrap;word-break:break-word;color:var(--ink);overflow-x:auto}
+.copy-btn{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:transparent;border:1px solid var(--accent);border-radius:4px;padding:3px 8px;cursor:pointer;font-family:'JetBrains Mono',monospace;transition:all .15s}
+.copy-btn:hover{background:var(--accent);color:#fff}
+.copy-btn.copied{background:#3a9a5c;border-color:#3a9a5c;color:#fff}
+
+/* TIPS */
+.tip{background:#fffbf7;border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 var(--r) var(--r) 0;margin:20px 0;font-size:13.5px;color:var(--ink2);line-height:1.7}
+.tip strong{color:var(--ink);font-weight:600}
+
+/* APPLICATION CARD */
+.app-card{background:#fff;border:1.5px solid var(--rule);border-radius:12px;padding:28px;margin-top:24px}
+.app-card-title{font-family:'Instrument Serif',serif;font-size:20px;color:var(--ink);margin-bottom:8px}
+.app-card-sub{font-size:13px;color:var(--ink3);margin-bottom:20px}
+
+/* GRID 2-UP */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+@media(max-width:600px){.grid2{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{text-align:center;padding:48px 24px 64px;font-size:12px;color:var(--ink3)}
+footer a{color:var(--ink3);text-decoration:none}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <a class="back" href="../index.html" target="_self">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3L5 8l5 5"/></svg>
+    아카이브
+  </a>
+  <span class="hdr-title">챗GPT 무드 이미지 생성</span>
+  <span class="tool-badge">ChatGPT</span>
+</header>
+
+<div class="hero">
+  <div class="hero-eyebrow">OHHEE'S Recipe · ChatGPT</div>
+  <h1 class="hero-title">챗GPT를 이용하여<br><em>일관성 있는 무드</em>의 이미지 생성하기</h1>
+  <div class="hero-meta">
+    <div class="meta-chip"><strong>준비물</strong> 키 비주얼 이미지 (선택)</div>
+    <div class="meta-chip"><strong>툴</strong> Pinterest · ChatGPT</div>
+    <div class="meta-chip"><strong>난이도</strong> 초급</div>
+  </div>
+  <p class="hero-desc">랜딩 페이지 제작에서 가장 선행되어야 할 작업 — 일관된 무드의 비주얼 이미지를 핀터레스트와 챗GPT만으로 완성하는 방법을 안내합니다. 미드저니 없이도 고급스러운 브랜드 피드를 만들 수 있습니다.</p>
+</div>
+
+<div class="process">
+  <div class="process-box">
+    <div class="label">랜딩 페이지 제작 전체 프로세스</div>
+    <div class="process-step active"><span class="arrow">→</span><span class="txt">레퍼런스 수집</span></div>
+    <div class="process-step active"><span class="arrow">→</span><span class="txt">키 비주얼 · 이미지 제작</span></div>
+    <div class="process-step"><span class="arrow">→</span><span class="txt">룩북 / 레이아웃 스킬 정리</span></div>
+    <div class="process-step"><span class="arrow">→</span><span class="txt">랜딩페이지 구조 설계</span></div>
+    <div class="process-step"><span class="arrow">→</span><span class="txt">HTML/CSS 제작</span></div>
+    <div class="process-step"><span class="arrow">→</span><span class="txt">반응형 구조 적용</span></div>
+    <div class="process-step"><span class="arrow">→</span><span class="txt">파일 테스트 → 배포 준비</span></div>
+  </div>
+</div>
+
+<hr class="divider" style="max-width:860px;margin:0 auto 48px">
+
+<!-- STEP 1 -->
+<div class="section">
+  <div class="step-header">
+    <div class="step-num">1</div>
+    <div>
+      <div class="step-title">레퍼런스 이미지 수집 또는 기존 이미지 준비하기</div>
+      <div class="step-sub">Pinterest · Cosmos 등에서 수집</div>
+    </div>
+  </div>
+  <p class="body-text">핀터레스트에서 <strong>'aesthetic instagram feed'</strong>를 검색하면 하나의 공통된 무드로 묶인 다양한 피드 구성 이미지들을 확인할 수 있습니다.</p>
+  <p class="body-text">실제 내 브랜드 제품의 촬영 사진을 사용하고 싶다면 이를 레퍼런스 이미지로 준비하세요.</p>
+
+  <div class="img-ph">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+    <div class="ph-label">Example Image</div>
+    <div class="ph-name">K-010.png</div>
+    <div>핀터레스트에서 수집한 3×3 그리드 레퍼런스 이미지</div>
+  </div>
+
+  <div class="tip">
+    <strong>저작권 TIP:</strong> 강의 자료에는 저작권을 준수하기 위해 직접 생성한 이미지 9장으로 3×3 그리드를 제작했습니다. 같은 이미지를 레퍼런스로 사용하셔도 됩니다.
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="section">
+  <div class="step-header">
+    <div class="step-num">2</div>
+    <div>
+      <div class="step-title">레퍼런스 이미지를 첨부 후 프롬프트 입력하기</div>
+      <div class="step-sub">IN ChatGPT</div>
+    </div>
+  </div>
+  <p class="body-text">수집한 그리드 이미지를 <strong>챗GPT에 첨부</strong>한 후 아래 프롬프트를 입력합니다. 프롬프트는 한글로 작성되어 있어 이해하기 쉽습니다.</p>
+  <p class="body-text">추구미와 방향성이 같다면 그대로 사용하셔도 되고, 원하는 그리드 수·비율·무드로 수정하여 사용하셔도 좋습니다. 단, <strong>2×2 또는 3×3 그리드</strong>를 추천합니다 (단독 추출 시 디테일 보존을 위해).</p>
+
+  <div class="img-ph">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+    <div class="ph-label">Screenshot</div>
+    <div class="ph-name">K-013.png</div>
+    <div>챗GPT에 레퍼런스 이미지 첨부 + 프롬프트 입력 화면</div>
+  </div>
+
+  <div class="prompt-wrap">
+    <div class="prompt-label">
+      <span>3×3 그리드 생성 프롬프트</span>
+      <button class="copy-btn" onclick="copyCode(this,'p1')">Copy</button>
+    </div>
+    <div class="prompt-box">
+      <pre id="p1">업로드한 레퍼런스 이미지는 사물이나 구도를 그대로 복제하는 용도가 아니라
+전체적인 무드, 색감, 큐레이션 감각만 참고해줘.
+레퍼런스 이미지 속 인물, 공간, 오브제, 의상, 구도를 그대로 따라하지 마.
+
+유럽 하이엔드 브랜드의 인스타그램 피드처럼 보이는 감각적인 3×3 그리드 이미지를 한 장으로 생성해줘.
+전체 비율은 3:4. 단순한 콜라주가 아니라 하나의 명품 브랜드 계정을 캡쳐한 것처럼 정교하게 큐레이션된 피드여야 해.
+9개의 이미지에는 다양한 카테고리가 균형 있게 포함되게 해줘.
+
+포함 요소: 미니멀한 유럽 인테리어
+조형적인 오브제 고급스러운
+패션 에디토리얼 무드의 인물 컷
+건축 디테일
+고급 라이프스타일 정물
+거울 반사 구도
+럭셔리한 패션 아이템
+
+스타일: 조용한 럭셔리 유럽 에디토리얼 무드
+고급 매거진 화보 느낌
+미술관 같은 절제된 분위기
+세련된 비주얼 머천다이징
+
+색감: 에스프레소 브라운이나 버건디를 포인트 컬러로 사용
+아이보리 크림 블랙 스톤 그레이
+채도를 낮춘 고급스러운 톤
+
+구도: 여백이 많은 구성 중앙 정렬 또는 감각적인 에디토리얼 구도
+각 프레임이 서로 다른 구도
+
+주의: 저렴한 핀터레스트 감성 금지
+과한 채도 금지 복잡한 배경 금지
+테두리 없는 자연스러운 그리드 9개의 이미지가 서로 비슷하게 생성되지 않도록 한다.
+다양하고 실험적인 구도를 활용한다.</pre>
+    </div>
+  </div>
+
+  <div class="img-ph">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+    <div class="ph-label">Generated Result</div>
+    <div class="ph-name">K-014.png</div>
+    <div>레퍼런스 무드가 반영된 3×3 그리드 생성 결과</div>
+  </div>
+
+  <p class="body-text" style="margin-top:20px">레퍼런스 이미지의 무드와 색감이 반영된 3×3 그리드가 생성됩니다. 마음에 드는 이미지를 선택하여 아래 프롬프트로 단독 추출합니다.</p>
+</div>
+
+<!-- STEP 3 -->
+<div class="section">
+  <div class="step-header">
+    <div class="step-num">3</div>
+    <div>
+      <div class="step-title">생성된 그리드에서 이미지 단독 추출하기</div>
+      <div class="step-sub">IN ChatGPT · 같은 대화창에서 이어서 입력</div>
+    </div>
+  </div>
+
+  <div class="prompt-wrap">
+    <div class="prompt-label">
+      <span>단독 이미지 추출 프롬프트</span>
+      <button class="copy-btn" onclick="copyCode(this,'p2')">Copy</button>
+    </div>
+    <div class="prompt-box">
+      <pre id="p2">첫 번째 줄의 두 번째, 2번 이미지만 단독으로 추출하여 생성해줘.
+원래의 이미지에서 색감이나 형태 변화없이 그대로 추출해줘.</pre>
+    </div>
+  </div>
+
+  <div class="img-ph">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+    <div class="ph-label">Extracted Image</div>
+    <div class="ph-name">K-015.png</div>
+    <div>그리드에서 단독으로 추출된 고해상도 이미지</div>
+  </div>
+
+  <div class="tip">
+    원하는 위치의 이미지 번호를 변경하여 사용하세요. "첫 번째 줄의 세 번째", "두 번째 줄의 첫 번째" 등으로 지정할 수 있습니다.
+  </div>
+</div>
+
+<!-- APPLICATION -->
+<div class="section">
+  <div class="step-header">
+    <div class="step-num" style="background:var(--ink)">+</div>
+    <div>
+      <div class="step-title">랜딩 페이지 제작을 위한 브랜딩 응용</div>
+      <div class="step-sub">같은 채팅창에서 무드를 유지하며 확장</div>
+    </div>
+  </div>
+  <p class="body-text">위의 과정과 동일하게 레퍼런스 이미지를 챗GPT에 첨부한 후, <strong>내 브랜드 이름과 무드에 맞게 프롬프트 내용을 수정</strong>하여 사용합니다.</p>
+  <p class="body-text">직접 수정이 번거로우시면, 챗GPT에게 "내 브랜드 무드를 설명할 테니 아래 프롬프트 폼은 유지하되 내용만 변경해줘"라고 지시하세요.</p>
+
+  <div class="app-card">
+    <div class="app-card-title">ORVÉ Brand — 예시 프롬프트</div>
+    <div class="app-card-sub">질샌더·더로우 무드의 가상 하이엔드 패션 브랜드</div>
+
+    <div class="img-ph">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <div class="ph-label">Brand Grid</div>
+      <div class="ph-name">ChatGPT_Image_...05_08_13.png</div>
+      <div>ORVÉ 브랜드 인스타그램 피드 3×3 그리드</div>
+    </div>
+
+    <div class="prompt-wrap">
+      <div class="prompt-label">
+        <span>ORVÉ 브랜딩 프롬프트</span>
+        <button class="copy-btn" onclick="copyCode(this,'p3')">Copy</button>
+      </div>
+      <div class="prompt-box">
+        <pre id="p3">업로드한 레퍼런스 이미지는 사물이나 구도를 그대로 복제하는 용도가 아니라
+전체적인 무드, 색감, 큐레이션 감각만 참고해줘.
+질샌더와 더 로우 무드의 가상 하이엔드 패션 브랜드 "ORVÉ"의 인스타그램 피드용 3×3 그리드 이미지를 한 장으로 생성해 줘.
+이미지의 전체 비율은 3:4.
+단순한 콜라주가 아니라 실제 유럽 하이엔드 패션 브랜드 계정을 캡쳐한 것처럼 정교하게 큐레이션된 브랜드 피드여야 해.
+
+브랜드 무드: The Row / Jil Sander / quiet luxury / editorial minimalism / museum-like restraint / luxury visual merchandising
+
+9개의 프레임은 서로 다른 카테고리로 균형 있게 구성해줘
+
+포함 요소:
+- 미니멀한 패션 룩북 화보 이미지
+- ORVÉ 브랜드 가방 제품컷
+- ORVÉ 로고가 인쇄된 종이 봉투 / 패키징
+- ORVÉ 레터링이 들어간 감각적인 타이포그래피 연출컷
+- 옷걸이에 걸린 미니멀 의류 디테일
+- ORVÉ 로고가 적힌 쿠키 / 디저트 오브제
+- 고급 정물 연출컷 - 브랜드 태그 / 종이 / 패브릭 디테일
+- 조형적인 오브제 또는 인테리어 컷
+
+스타일: 하이엔드 패션 매거진 화보 / 유럽 에디토리얼 무드 / 조용한 럭셔리 절제된 고급스러움 / 은은한 필름 그레인 / 부드러운 자연광 / 고급 비주얼 머천다이징
+
+색감: 웜 아이보리, 크림 / 오트밀 / 샌드 베이지 / 토프 / 에스프레소 브라운 / 차콜 블랙
+
+구도: 여백이 많은 구성 중앙 정렬 / 실험적인 클로즈업 / 감각적인 크롭 / 정물 에디토리얼 구도 / 중복되는 구도 금지
+
+재질: 매트한 종이 / 고급 패브릭 / 리넨 / 우드 / 스톤 / 브러시드 메탈 / 가죽 / 크롬
+
+중요: ORVÉ 텍스트는 정확하게 자연스럽게 생성 / 9개의 프레임이 서로 거의 비슷하면 안 됨 / 저렴한 SNS 감성 금지 / 과한 채도 금지 / 복잡한 배경 금지</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fragrance extension -->
+  <div class="app-card" style="margin-top:20px">
+    <div class="app-card-title">프래그런스 라인 확장 — 예시</div>
+    <div class="app-card-sub">같은 채팅창에서 브랜드 무드를 유지하며 제품 라인 확장</div>
+
+    <p class="body-text" style="margin-bottom:16px">챗GPT는 LLM 방식의 AI이기 때문에 같은 채팅창에서 아래 프롬프트를 입력하면 브랜드 무드를 유지한 확장 작업이 가능합니다.</p>
+
+    <div class="grid2">
+      <div class="img-ph" style="margin:0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <div class="ph-label">Fragrance Grid 1</div>
+        <div class="ph-name">ChatGPT_Image_...05_29_48.png</div>
+        <div>ORVÉ 프래그런스 제품 3×3 그리드</div>
+      </div>
+      <div class="img-ph" style="margin:0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <div class="ph-label">Fragrance Grid 2</div>
+        <div class="ph-name">ChatGPT_Image_...05_33_10.png</div>
+        <div>ORVÉ 프래그런스 추가 생성 결과</div>
+      </div>
+    </div>
+
+    <div class="prompt-wrap" style="margin-top:20px">
+      <div class="prompt-label">
+        <span>프래그런스 라인 확장 프롬프트</span>
+        <button class="copy-btn" onclick="copyCode(this,'p4')">Copy</button>
+      </div>
+      <div class="prompt-box">
+        <pre id="p4">질샌더와 더 로우 무드의 가상 하이엔드 패션 브랜드 "ORVÉ" 의 키 비주얼, 무드를 유지하고
+가상의 프래그런스, 센트 라인 제품을 생성해보고 싶어.
+브랜드 무드에 어울리는 패키지와 연출컷으로 향수와 디퓨저, 비누들을
+인스타그램 피드용 3×3 그리드 이미지 한 장으로 생성해줘.
+이미지 전체 비율은 3:4.</pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>OHHEE's Recipe · <a href="../index.html" target="_self">아카이브로 돌아가기</a></p>
+</footer>
+
+<script>
+function copyCode(btn, id){
+  const el = document.getElementById(id);
+  navigator.clipboard.writeText(el.textContent.trim()).then(()=>{
+    const orig = btn.textContent;
+    btn.textContent='Copied!';
+    btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent=orig;btn.classList.remove('copied');},1800);
+  });
+}
+</script>
+</body>
+</html>

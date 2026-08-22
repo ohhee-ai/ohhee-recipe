@@ -1,0 +1,251 @@
+<title>드림코어 · 윔지코어 비주얼 공식</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--paper:#f4f2ec;--ink:#1a1917;--accent:#b5502e;--blue:#3b6ea8;--sans:'Inter',system-ui,sans-serif;--serif:'Instrument Serif',Georgia,serif;--mono:'JetBrains Mono',monospace}
+html{color-scheme:light}*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+::selection{background:var(--ink);color:var(--paper)}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+.w{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+@media(min-width:1024px){.w{padding:0 2.5rem}}
+header{position:sticky;top:0;z-index:40;border-bottom:1px solid rgba(26,25,23,.1);background:rgba(244,242,236,.85);backdrop-filter:blur(12px)}
+.hdr{display:flex;align-items:center;justify-content:space-between;height:56px}
+.back-link{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:rgba(26,25,23,.5);text-decoration:none;transition:color 150ms}
+.back-link:hover{color:var(--ink)}
+.wm{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink);text-decoration:none}
+.wm-vol{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:rgba(26,25,23,.38);margin-left:.4rem}
+.page-hero{padding:3rem 0 2rem;border-bottom:1px solid rgba(26,25,23,.1)}
+.eyebrow{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem}
+.eline{width:2rem;height:1px;background:rgba(26,25,23,.25)}
+.etxt{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:rgba(26,25,23,.4)}
+.page-title{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:600;line-height:1.15;letter-spacing:-.03em;margin-bottom:1rem;text-wrap:balance}
+.page-title em{font-family:var(--serif);font-weight:400;font-style:italic}
+.prep-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.prep-badge{display:inline-flex;align-items:center;padding:4px 12px;border-radius:9999px;border:1px solid rgba(26,25,23,.15);background:rgba(26,25,23,.04);font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(26,25,23,.6)}
+.main-body{padding:2rem 0 4rem}
+.formula-sec{padding:2rem 0;border-bottom:1px solid rgba(26,25,23,.07)}
+.formula-sec:last-child{border-bottom:none}
+.fs-num{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:rgba(26,25,23,.3);margin-bottom:.4rem}
+.fs-title{font-size:1.15rem;font-weight:600;letter-spacing:-.02em;margin-bottom:1rem}
+.body-text{font-size:13.5px;line-height:1.8;color:rgba(26,25,23,.7);max-width:72ch;word-break:keep-all;margin-bottom:.75rem}
+.formula-box{background:rgba(26,25,23,.04);border:1px solid rgba(26,25,23,.1);border-radius:8px;padding:.9rem 1rem;font-family:var(--mono);font-size:12px;line-height:1.6;color:rgba(26,25,23,.7);margin:.75rem 0}
+.formula-box strong{color:var(--ink);font-weight:600}
+.prompt-block{background:rgba(26,25,23,.04);border:1px solid rgba(26,25,23,.1);border-radius:8px;position:relative;overflow:hidden;margin:.75rem 0}
+.prompt-pre{font-family:var(--mono);font-size:11px;line-height:1.7;color:rgba(26,25,23,.8);padding:1rem 3.5rem 1rem 1rem;white-space:pre-wrap;word-break:break-word}
+.copy-btn{position:absolute;top:.6rem;right:.6rem;font-family:var(--mono);font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:rgba(26,25,23,.5);background:rgba(244,242,236,.9);border:1px solid rgba(26,25,23,.15);border-radius:9999px;padding:.3rem .7rem;cursor:pointer;transition:all 150ms}
+.copy-btn:hover{color:var(--ink);border-color:rgba(26,25,23,.4)}
+.copy-btn.copied{color:var(--accent);border-color:rgba(181,80,46,.3)}
+.variants{margin:.5rem 0 0;display:flex;flex-wrap:wrap;gap:.35rem}
+.variant-tag{font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:9999px;border:1px solid rgba(26,25,23,.12);color:rgba(26,25,23,.55)}
+.rule-callout{border-left:3px solid var(--accent);background:rgba(181,80,46,.04);border-radius:0 8px 8px 0;padding:.75rem 1rem;font-size:13px;line-height:1.7;color:rgba(26,25,23,.75);margin:.75rem 0;word-break:keep-all}
+.cheat-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:12.5px}
+.cheat-table th{text-align:left;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(26,25,23,.4);padding:.5rem .75rem;border-bottom:1px solid rgba(26,25,23,.15)}
+.cheat-table td{padding:.55rem .75rem;border-bottom:1px solid rgba(26,25,23,.06);vertical-align:top;line-height:1.5}
+.cheat-table td:last-child{font-family:var(--mono);font-size:10px;color:rgba(181,80,46,.8)}
+.intro-block{padding:1.5rem 0 1rem;border-bottom:1px solid rgba(26,25,23,.1)}
+.golden-ratio{display:grid;gap:.75rem;margin:1rem 0}
+@media(min-width:680px){.golden-ratio{grid-template-columns:repeat(2,1fr)}}
+.ratio-card{background:rgba(26,25,23,.03);border:1px solid rgba(26,25,23,.08);border-radius:10px;padding:1rem}
+.ratio-card-label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:rgba(26,25,23,.4);margin-bottom:.4rem}
+.ratio-card-text{font-size:13px;line-height:1.6;color:rgba(26,25,23,.75);word-break:keep-all}
+.step-row{display:grid;gap:1.5rem;align-items:start;padding:2rem 0;border-bottom:1px solid rgba(26,25,23,.07)}
+.step-row:last-child{border-bottom:none}
+@media(min-width:860px){.step-row{grid-template-columns:1fr 1.2fr}}
+.step-num-badge{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.2em;color:rgba(26,25,23,.3);margin-bottom:.4rem}
+.step-title-text{font-size:1.1rem;font-weight:600;letter-spacing:-.02em;margin-bottom:.75rem}
+.step-img{border-radius:12px;overflow:hidden;border:1px solid rgba(26,25,23,.1);box-shadow:0 2px 12px rgba(26,25,23,.06)}
+.step-img img{width:100%;display:block;height:auto}
+.points{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.points li{font-size:13px;line-height:1.65;color:rgba(26,25,23,.7);padding-left:1rem;position:relative;word-break:keep-all}
+.points li::before{content:'—';position:absolute;left:0;color:rgba(26,25,23,.3)}
+footer{border-top:1px solid rgba(26,25,23,.1);padding:1.5rem 0}
+.ft{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.fb{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:rgba(26,25,23,.4)}
+.fc{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:rgba(26,25,23,.3)}
+</style>
+<header><div class="w hdr">
+  <a href="./index.html" class="back-link" target="_self">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    아카이브
+  </a>
+  <a href="./index.html" class="wm" target="_self">OHHEE's Recipe<span class="wm-vol">/ Vol.01</span></a>
+</div></header>
+<main>
+<section class="page-hero">
+  <div class="w">
+    <div class="eyebrow"><span class="eline"></span><span class="etxt">Midjourney — 008</span></div>
+    <h1 class="page-title"><em>드림코어 · 윔지코어</em><br>후킹이 잘 되는 비주얼 공식 10가지</h1>
+    <div class="prep-row">
+      <span class="prep-badge">Midjourney</span>
+      <span class="prep-badge">Dreamcore</span>
+      <span class="prep-badge">Whimsicore</span>
+    </div>
+  </div>
+</section>
+
+<div class="main-body">
+<div class="w">
+
+<div class="intro-block">
+  <p class="body-text">드림코어와 윔지코어 비주얼 제작의 핵심 전략은 <strong>'익숙함 70% + 비현실성 30%'</strong>의 조화입니다. 완전히 낯선 이미지는 공감하기 어렵고, 너무 익숙한 이미지는 시선을 끌지 못합니다. 익숙한 대상에 '이상한 규칙' 하나를 슬쩍 끼워 넣는 것이 포인트입니다.</p>
+  <div class="golden-ratio">
+    <div class="ratio-card"><p class="ratio-card-label">의인화</p><p class="ratio-card-text">동물을 사람처럼 행동하게 설정하기</p></div>
+    <div class="ratio-card"><p class="ratio-card-label">스케일 변주</p><p class="ratio-card-text">아주 작은 사물을 거대하게 키우기</p></div>
+    <div class="ratio-card"><p class="ratio-card-label">초현실 결합</p><p class="ratio-card-text">교실·편의점 같은 일상 공간에 구름·별·꽃비 배치</p></div>
+    <div class="ratio-card"><p class="ratio-card-label">배치의 부조화</p><p class="ratio-card-text">사물을 원래 있어야 할 곳이 아닌 엉뚱한 장소에 두기</p></div>
+  </div>
+  <div class="rule-callout">한 장면에 이상한 규칙은 하나만. 여러 개를 동시에 넣으면 이미지가 너무 복잡하고 기괴해집니다.</div>
+
+  <p class="body-text" style="margin-top:1.25rem">기본 프롬프트 공식</p>
+  <div class="formula-box">
+    [익숙한 대상] + [익숙한 장소] + [하나의 불가능한 규칙] + [정서] + [구도/렌즈] + [빛/색감] + [질감] --ar 4:5 --s 250 --w 120 --c 15
+  </div>
+</div>
+
+
+<div class="formula-sec">
+  <p class="fs-num">01</p>
+  <h3 class="fs-title">동물 의인화</h3>
+  <div class="formula-box"><strong>공식:</strong> 동물 + 인간의 일상 행동 + 작은 진지함</div>
+  <div class="prompt-block">
+    <pre class="prompt-pre" id="p01">a tiny rabbit barista making moon-shaped coffee in a pastel cafe, serious expression, whimsical core, soft morning light, cozy surreal atmosphere, detailed storybook illustration --ar 4:5 --s 300 --w 80 --c 12</pre>
+    <button class="copy-btn" data-target="p01">Copy</button>
+  </div>
+  <div class="variants"><span class="variant-tag">개구리 약사</span><span class="variant-tag">고양이 우체부</span><span class="variant-tag">달팽이 택시기사</span><span class="variant-tag">오리 천문학자</span><span class="variant-tag">곰 할머니 꽃집</span></div>
+  <p class="body-text" style="margin-top:.65rem;font-size:12.5px;color:rgba(26,25,23,.55)">"귀여운 일상" 이 아니라 진지하게 인간의 일을 하고 있는 느낌을 주는 것이 포인트</p>
+</div>
+<div class="formula-sec">
+  <p class="fs-num">02</p>
+  <h3 class="fs-title">크기 왜곡</h3>
+  <div class="formula-box"><strong>공식:</strong> 작은 것이 거대해지거나, 큰 것이 작아진다</div>
+  <div class="prompt-block">
+    <pre class="prompt-pre" id="p02">a giant teacup sitting in the middle of a quiet suburban street, tiny houses around it, pastel dreamcore, nostalgic 90s photo, soft clouds, empty road, slightly uncanny but beautiful --ar 4:5 --s 250 --w 160 --c 18</pre>
+    <button class="copy-btn" data-target="p02">Copy</button>
+  </div>
+  <div class="variants"><span class="variant-tag">거대한 딸기 집</span><span class="variant-tag">손바닥만 한 산</span><span class="variant-tag">사람보다 큰 토끼 인형</span><span class="variant-tag">도시 크기의 케이크</span><span class="variant-tag">작은 달을 들고 있는 아이</span></div>
+  <p class="body-text" style="margin-top:.65rem;font-size:12.5px;color:rgba(26,25,23,.55)">크기만 바꿔도 장면이 바로 초현실적으로 보임. 썸네일에서 특히 "어?" 하고 멈추게 만드는 효과</p>
+</div>
+<div class="formula-sec">
+  <p class="fs-num">03</p>
+  <h3 class="fs-title">익숙한 공간 + 불가능한 날씨</h3>
+  <div class="formula-box"><strong>공식:</strong> 교실·편의점·버스정류장 + 실내 비·눈·구름·꽃비</div>
+  <div class="prompt-block">
+    <pre class="prompt-pre" id="p03">an empty classroom filled with soft pink flower rain, desks floating slightly above the floor, warm afternoon sunlight, nostalgic dreamcore, quiet liminal space, hazy pastel film photo --ar 4:5 --s 220 --w 180 --c 15</pre>
+    <button class="copy-btn" data-target="p03">Copy</button>
+  </div>
+  <div class="variants"><span class="variant-tag">편의점 안에 구름</span><span class="variant-tag">지하철역에 벚꽃눈</span><span class="variant-tag">욕실에 별비</span><span class="variant-tag">침실에 작은 무지개 폭풍</span></div>
+  <p class="body-text" style="margin-top:.65rem;font-size:12.5px;color:rgba(26,25,23,.55)">익숙한 장소일수록 효과가 더 좋음 — 보는 사람이 공간을 바로 이해하고 이상한 요소에 집중하게 됨</p>
+</div>
+<div class="formula-sec">
+  <p class="fs-num">04</p>
+  <h3 class="fs-title">사물 안에 세계 넣기</h3>
+  <div class="formula-box"><strong>공식:</strong> 컵·서랍·가방·TV·자판기 안에 다른 세계 넣기</div>
+  <div class="prompt-block">
+    <pre class="prompt-pre" id="p04">inside an old vending machine is a tiny glowing meadow with miniature sheep, pastel dreamcore, surreal product photography, soft mist, nostalgic fluorescent light, highly detailed --ar 4:5 --s 280 --w 150 --c 20</pre>
+    <button class="copy-btn" data-target="p04">Copy</button>
+  </div>
+  <div class="variants"><span class="variant-tag">머그컵 안의 바다</span><span class="variant-tag">서랍 속 작은 마을</span><span class="variant-tag">TV 속 숲</span><span class="variant-tag">신발 안의 놀이공원</span><span class="variant-tag">책가방 안의 밤하늘</span></div>
+  <p class="body-text" style="margin-top:.65rem;font-size:12.5px;color:rgba(26,25,23,.55)">평범한 사물 안에 예상보다 큰 세계가 들어있게 만드는 것이 핵심</p>
+</div>
+<div class="formula-sec">
+  <p class="fs-num">05</p>
+  <h3 class="fs-title">장소 바꾸기</h3>
+  <div class="formula-box"><strong>공식:</strong> 대상은 평범하게, 배치만 이상하게</div>
+  <div class="prompt-block">
+    <pre class="prompt-pre" id="p05">a pink playground slide standing alone in the middle of a supermarket aisle, soft fluorescent light, empty liminal space, dreamcore, pastel colors, surreal realistic photo --ar 4:5 --s 180 --w 180 --c 18</pre>
+    <button class="copy-btn" data-target="p05">Copy</button>
+  </div>
+  <div class="variants"><span class="variant-tag">수영장 안의 침대</span><span class="variant-tag">숲속의 ATM</span><span class="variant-tag">구름 위의 세탁기</span><span class="variant-tag">도서관 안의 회전목마</span><span class="variant-tag">바닷속의 거실</span></div>
+  <p class="body-text" style="margin-top:.65rem;font-size:12.5px;color:rgba(26,25,23,.55)">대상 자체를 이상하게 만들지 않아도 됨. 놓이는 장소만 바꿔도 충분히 낯설어짐</p>
+</div>
+<div class="formula-sec">
+  <p class="fs-num">06</p>
+  <h3 class="fs-title">반복 + 하나만 이상하게</h3>
+  <div class="formula-box"><strong>공식:</strong> 같은 오브젝트가 반복되고, 그 중 하나만 다르다</div>
+  <div class="prompt-block">
+    <pre class="prompt-pre" id="p06">a long hallway filled with hundreds of identical pastel doors, one tiny glowing moon-shaped door in the center, dreamcore, symmetrical composition, soft haze, uncanny but inviting --ar 4:5 --s 230 --w 130 --c 10</pre>
+    <button class="copy-btn" data-target="p06">Copy</button>
+  </div>
+  <div class="variants"><span class="variant-tag">수많은 우산 중 하나만 구름</span><span class="variant-tag">여러 개의 의자 중 하나만 꽃</span><span class="variant-tag">똑같은 창문 중 하나만 바다</span></div>
+  <p class="body-text" style="margin-top:.65rem;font-size:12.5px;color:rgba(26,25,23,.55)">보는 사람이 자연스럽게 "다른 하나"를 찾게 되어 시선이 아주 잘 모임</p>
+</div>
+<div class="formula-sec">
+  <p class="fs-num">07</p>
+  <h3 class="fs-title">무생물에 감정 주기</h3>
+  <div class="formula-box"><strong>공식:</strong> 사물 + 표정·행동·기분</div>
+  <div class="prompt-block">
+    <pre class="prompt-pre" id="p07">a lonely little lamp sitting on a park bench at night, tiny moths around it like friends, whimsical melancholic mood, soft glowing light, storybook texture --ar 4:5 --s 300 --w 100 --c 12</pre>
+    <button class="copy-btn" data-target="p07">Copy</button>
+  </div>
+  <div class="variants"><span class="variant-tag">울고 있는 찻잔</span><span class="variant-tag">쉬고 있는 구름</span><span class="variant-tag">부끄러워하는 버섯</span><span class="variant-tag">잠자는 전화기</span><span class="variant-tag">화난 작은 별</span></div>
+  <p class="body-text" style="margin-top:.65rem;font-size:12.5px;color:rgba(26,25,23,.55)">노골적인 캐릭터보다 살짝 살아있는 느낌만 주는 게 더 세련됨. 이미지에 작은 이야기가 생김</p>
+</div>
+<div class="formula-sec">
+  <p class="fs-num">08</p>
+  <h3 class="fs-title">재질 바꾸기</h3>
+  <div class="formula-box"><strong>공식:</strong> 딱딱한 것을 부드럽게, 자연물을 인공 재질로</div>
+  <div class="prompt-block">
+    <pre class="prompt-pre" id="p08">a staircase made of translucent jelly leading into soft clouds, pastel blue and pink, dreamcore surrealism, gentle light, minimal composition, glossy texture --ar 4:5 --s 260 --w 180 --c 16</pre>
+    <button class="copy-btn" data-target="p08">Copy</button>
+  </div>
+  <div class="variants"><span class="variant-tag">솜사탕 구름 계단</span><span class="variant-tag">유리로 된 꽃</span><span class="variant-tag">도자기 달</span><span class="variant-tag">젤리 버스</span><span class="variant-tag">털실로 된 바다</span></div>
+  <p class="body-text" style="margin-top:.65rem;font-size:12.5px;color:rgba(26,25,23,.55)">사람은 이미지를 볼 때 시각뿐 아니라 촉감도 상상함. 재질 변경은 미드저니에서 시각적으로 잘 나오는 편</p>
+</div>
+<div class="formula-sec">
+  <p class="fs-num">09</p>
+  <h3 class="fs-title">포털 공식</h3>
+  <div class="formula-box"><strong>공식:</strong> 문·창문·거울·액자 + 다른 세계</div>
+  <div class="prompt-block">
+    <pre class="prompt-pre" id="p09">a small white door standing alone on a grassy hill, inside the doorway is a glowing ocean at sunset, pastel dreamcore, quiet surreal landscape, soft film grain --ar 4:5 --s 220 --w 140 --c 14</pre>
+    <button class="copy-btn" data-target="p09">Copy</button>
+  </div>
+  <div class="variants"><span class="variant-tag">거울 속 놀이공원</span><span class="variant-tag">냉장고 속 우주</span><span class="variant-tag">액자 안의 비 오는 숲</span><span class="variant-tag">창문 너머 거대한 달</span></div>
+  <p class="body-text" style="margin-top:.65rem;font-size:12.5px;color:rgba(26,25,23,.55)">문·창문은 원래 "다른 곳으로 들어가는 장치"이기 때문에 초현실적 장면과 아주 잘 어울림</p>
+</div>
+<div class="formula-sec">
+  <p class="fs-num">10</p>
+  <h3 class="fs-title">레트로 기기 + 자연물</h3>
+  <div class="formula-box"><strong>공식:</strong> CRT TV·카세트·공중전화·게임기 + 꽃·구름·물·별</div>
+  <div class="prompt-block">
+    <pre class="prompt-pre" id="p10">an old CRT television on a grassy field, soft clouds blooming from the screen, nostalgic dreamcore, pastel sky, 90s snapshot, gentle surrealism --ar 4:5 --s 240 --w 130 --c 15</pre>
+    <button class="copy-btn" data-target="p10">Copy</button>
+  </div>
+  <div class="variants"><span class="variant-tag">카세트테이프에서 자라는 꽃</span><span class="variant-tag">공중전화 안의 숲</span><span class="variant-tag">게임보이 화면 속 바다</span><span class="variant-tag">라디오에서 나오는 나비</span></div>
+  <p class="body-text" style="margin-top:.65rem;font-size:12.5px;color:rgba(26,25,23,.55)">레트로 기기는 향수를 만들고, 자연물은 몽환적인 느낌을 더해줌. 요즘 감성에서도 안정적으로 반응이 옴</p>
+</div>
+
+<div class="formula-sec">
+  <h3 class="fs-title" style="margin-bottom:1rem">치트키 조합표</h3>
+  <div style="overflow-x:auto">
+  <table class="cheat-table">
+    <tr><th>베이스</th><th>변형</th><th>감성</th><th>코어</th></tr>
+    <tr><td>교실</td><td>꽃비, 구름, 물고기</td><td>향수, 고요함</td><td>드림코어</td></tr>
+    <tr><td>편의점</td><td>별, 안개, 거대한 달</td><td>리미널, 이상함</td><td>드림코어</td></tr>
+    <tr><td>버스정류장</td><td>동물 승객, 거대 버섯</td><td>귀여움, 기다림</td><td>윔지코어</td></tr>
+    <tr><td>침실</td><td>바다, 숲, 하늘</td><td>몽환, 사적인 꿈</td><td>드림코어</td></tr>
+    <tr><td>찻잔</td><td>작은 마을, 구름, 호수</td><td>아기자기함</td><td>윔지코어</td></tr>
+    <tr><td>TV</td><td>숲, 구름, 눈, 문</td><td>레트로, 초현실</td><td>드림코어</td></tr>
+    <tr><td>버섯</td><td>집, 모자, 우산, 의자</td><td>동화, 자연</td><td>윔지코어</td></tr>
+    <tr><td>문</td><td>바다, 우주, 어린 시절 방</td><td>미스터리</td><td>드림코어</td></tr>
+  </table>
+  </div>
+  <p class="body-text" style="margin-top:1rem">위 표에서 베이스 + 변형 + 감성 하나씩 골라 조합하면 바로 프롬프트의 뼈대가 완성됩니다.</p>
+</div>
+
+</div>
+</div>
+</main>
+<footer><div class="w ft">
+  <span class="fb">OHHEE's Recipe / Vol.01</span>
+  <span class="fc">Midjourney · Dreamcore · 008</span>
+</div></footer>
+<script>
+document.querySelectorAll('.copy-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    navigator.clipboard.writeText(document.getElementById(btn.dataset.target).innerText).then(()=>{
+      btn.textContent='Copied!';btn.classList.add('copied');
+      setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},1800);
+    });
+  });
+});
+</script>
