@@ -5,9 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>미드저니 프롬프트 기초 & 파라미터</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
-<style>
-:root{--paper:#f4f2ec;--ink:#1a1917;--accent:#b5502e;--muted:#6b6760;--border:#dedad2;--code-bg:#edeae2;--tag-bg:#ede9e0;--sans:'Inter',sans-serif;--serif:'Instrument Serif',Georgia,serif;--mono:'JetBrains Mono',monospace}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#1a1917;--ink:#f0ede6;--accent:#d4714a;--muted:#9b9690;--border:#333028;--code-bg:#252320;--tag-bg:#222019}}
+<link rel="stylesheet" href="./common.css">
+<style>@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#1a1917;--ink:#f0ede6;--accent:#d4714a;--muted:#9b9690;--border:#333028;--code-bg:#252320;--tag-bg:#222019}}
 :root[data-theme="dark"]{--paper:#1a1917;--ink:#f0ede6;--accent:#d4714a;--muted:#9b9690;--border:#333028;--code-bg:#252320;--tag-bg:#222019}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
@@ -51,8 +50,7 @@ h1{font-family:var(--serif);font-size:clamp(22px,4vw,32px);font-weight:400;line-
 .range{font-family:var(--mono);font-size:11.5px;color:var(--ink)}
 .new-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.05em;background:var(--accent);color:#fff;border-radius:4px;padding:1px 6px;vertical-align:middle;margin-left:6px}
 
-hr{border:none;border-top:1px solid var(--border);margin:40px 0}
-</style>
+hr{border:none;border-top:1px solid var(--border);margin:40px 0}</style>
 </head>
 <body>
 <div class="wrap">
@@ -214,18 +212,6 @@ hr{border:none;border-top:1px solid var(--border);margin:40px 0}
         <td>이미지 프롬프트의 비중 설정</td>
         <td><span class="range">0 ~ 2</span></td>
         <td><span class="tip">이미지 주소와 텍스트 프롬프트를 모두 사용할 때 이미지 영향력 결정</span></td>
-      </tr>
-      <tr>
-        <td><code>--no</code></td>
-        <td>특정 요소 제외</td>
-        <td><span class="range">텍스트</span></td>
-        <td><span class="tip">생성 결과에서 빼고 싶은 요소를 지정. 예: <code>--no background, shadow</code></span></td>
-      </tr>
-      <tr>
-        <td><code>--draft</code></td>
-        <td>초안 모드 (빠른 생성)</td>
-        <td><span class="range">-</span></td>
-        <td><span class="tip">품질을 낮추고 속도를 높인 빠른 프리뷰용 생성. 구도·컨셉 확인 후 본 생성 전 테스트에 유용</span></td>
       </tr>
     </tbody>
   </table>

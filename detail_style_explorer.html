@@ -4,18 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Midjourney Style Explorer & Mixing</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
-<style>
-:root{
-  --paper:#f4f2ec;--ink:#1a1917;--ink2:#4a4845;--ink3:#888480;
-  --accent:#1a6b8a;--accent-bg:#e8f4f8;--accent-border:#b0d8e8;
-  --rule:#d8d5ce;--code-bg:#ede9e0;--code-dark:#1e2a30;--code-text:#c8e6f0;
-  --good:#1a7a4a;--good-bg:#e8f5ee;
-  --warn:#a05010;--warn-bg:#fff4e8;
-  --r:10px;
-}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+<link rel="stylesheet" href="./common.css">
+<style>@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --paper:#1a1f22;--ink:#e8e4dc;--ink2:#aaa89f;--ink3:#666460;
   --accent:#4ab8d8;--accent-bg:#0d2535;--accent-border:#1a4a60;
   --rule:#2e3438;--code-bg:#242c30;--code-dark:#0d1518;--code-text:#b0d8e8;
@@ -80,10 +70,6 @@ p{color:var(--ink2);margin-bottom:12px;font-size:14.5px}
 .code-wrap{margin:8px 0 16px;position:relative}
 .code-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);font-family:'JetBrains Mono',monospace;margin-bottom:5px}
 .code-block{background:var(--code-dark);border-radius:8px;padding:14px 16px;font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.8;color:var(--code-text);white-space:pre;overflow-x:auto;position:relative}
-.copy-btn{position:absolute;top:8px;right:8px;display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:transparent;border:1px solid var(--accent);border-radius:4px;padding:2px 7px;cursor:pointer;font-family:'JetBrains Mono',monospace;transition:all .15s}
-.copy-btn:hover{background:var(--accent);color:#fff}
-.copy-btn.copied{background:var(--good);border-color:var(--good);color:#fff}
-
 /* INLINE CODE */
 code{background:var(--code-bg);border:1px solid var(--rule);border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;padding:1px 5px;color:var(--ink)}
 
@@ -127,8 +113,7 @@ tbody tr:hover td{background:var(--code-bg)}
 .check-no{font-size:12px;color:var(--warn);font-weight:600;min-width:100px}
 
 /* DIVIDER */
-hr{border:none;border-top:1.5px solid var(--rule);margin:32px 0}
-</style>
+hr{border:none;border-top:1.5px solid var(--rule);margin:32px 0}</style>
 </head>
 <body>
 

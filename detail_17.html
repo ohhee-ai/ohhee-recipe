@@ -1,32 +1,6 @@
 <title>2컷 밈 만들기 프롬프트</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
-<style>
-:root{--paper:#f4f2ec;--ink:#1a1917;--accent:#b5502e;--sans:'Inter',system-ui,sans-serif;--serif:'Instrument Serif',Georgia,serif;--mono:'JetBrains Mono',monospace}
-html{color-scheme:light}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-::selection{background:var(--ink);color:var(--paper)}
-body{font-family:var(--sans);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
-.w{max-width:1200px;margin:0 auto;padding:0 1.5rem}
-@media(min-width:1024px){.w{padding:0 2.5rem}}
-
-header{position:sticky;top:0;z-index:40;border-bottom:1px solid rgba(26,25,23,.1);background:rgba(244,242,236,.85);backdrop-filter:blur(12px)}
-.hdr{display:flex;align-items:center;justify-content:space-between;height:56px}
-.back-link{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:rgba(26,25,23,.5);text-decoration:none;transition:color 150ms}
-.back-link:hover{color:var(--ink)}
-.wm{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink);text-decoration:none}
-.wm-vol{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:rgba(26,25,23,.38);margin-left:.4rem}
-
-.page-hero{padding:3rem 0 2rem;border-bottom:1px solid rgba(26,25,23,.1)}
-.eyebrow{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem}
-.eline{width:2rem;height:1px;background:rgba(26,25,23,.25)}
-.etxt{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:rgba(26,25,23,.4)}
-.page-title{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:600;line-height:1.15;letter-spacing:-.03em;margin-bottom:1rem;text-wrap:balance}
-.page-title em{font-family:var(--serif);font-weight:400;font-style:italic}
-.prep-row{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
-.prep-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:9999px;border:1px solid rgba(26,25,23,.15);background:rgba(26,25,23,.04);font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(26,25,23,.6)}
-
-/* Intro */
+<link rel="stylesheet" href="./common.css">
+<style>/* Intro */
 .intro-sec{padding:2rem 0;border-bottom:1px solid rgba(26,25,23,.1)}
 .intro-label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.18em;color:rgba(26,25,23,.35);margin-bottom:.75rem}
 .intro-text{font-size:13.5px;line-height:1.8;color:rgba(26,25,23,.7);max-width:64ch;word-break:keep-all;margin-bottom:.75rem}
@@ -51,21 +25,7 @@ header{position:sticky;top:0;z-index:40;border-bottom:1px solid rgba(26,25,23,.1
 /* Content */
 .ps-content{display:flex;flex-direction:column;gap:1.25rem}
 .content-label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.2em;color:rgba(26,25,23,.35);margin-bottom:.5rem}
-.prompt-block{background:rgba(26,25,23,.04);border:1px solid rgba(26,25,23,.1);border-radius:8px;position:relative;overflow:hidden}
-.prompt-pre{font-family:var(--mono);font-size:11px;line-height:1.7;color:rgba(26,25,23,.8);padding:1rem;white-space:pre-wrap;word-break:break-word}
-.copy-btn{position:absolute;top:.6rem;right:.6rem;font-family:var(--mono);font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:rgba(26,25,23,.5);background:rgba(244,242,236,.9);border:1px solid rgba(26,25,23,.15);border-radius:9999px;padding:.3rem .7rem;cursor:pointer;transition:all 150ms}
-.copy-btn:hover{color:var(--ink);border-color:rgba(26,25,23,.4)}
-.copy-btn.copied{color:var(--accent);border-color:rgba(181,80,46,.3)}
-.points{list-style:none;display:flex;flex-direction:column;gap:.65rem}
-.points li{font-size:13px;line-height:1.65;color:rgba(26,25,23,.7);padding-left:1rem;position:relative;word-break:keep-all}
-.points li::before{content:'—';position:absolute;left:0;color:rgba(26,25,23,.3)}
-.tag-pill{display:inline-block;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;padding:3px 9px;border-radius:9999px;border:1px solid rgba(26,25,23,.15);color:rgba(26,25,23,.5);margin:.15rem}
-
-footer{border-top:1px solid rgba(26,25,23,.1);padding:1.5rem 0}
-.ft{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
-.fb{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:rgba(26,25,23,.4)}
-.fc{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:rgba(26,25,23,.3)}
-</style>
+.tag-pill{display:inline-block;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;padding:3px 9px;border-radius:9999px;border:1px solid rgba(26,25,23,.15);color:rgba(26,25,23,.5);margin:.15rem}</style>
 
 <header>
   <div class="w hdr">

@@ -6,9 +6,8 @@
 <title>COTTAGECORE 예제 실습</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
-<style>
-:root{--paper:#f4f2ec;--ink:#1a1917;--accent:#b5502e;--muted:#6b6760;--border:#dedad2;--code-bg:#edeae2}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#1a1917;--ink:#f0ede6;--accent:#d4714a;--muted:#9b9690;--border:#333028;--code-bg:#252320}}
+<link rel="stylesheet" href="./common.css">
+<style>@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#1a1917;--ink:#f0ede6;--accent:#d4714a;--muted:#9b9690;--border:#333028;--code-bg:#252320}}
 :root[data-theme="dark"]{--paper:#1a1917;--ink:#f0ede6;--accent:#d4714a;--muted:#9b9690;--border:#333028;--code-bg:#252320}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;font-size:15px;line-height:1.7}
@@ -40,8 +39,7 @@ pre{background:var(--code-bg);border:1px solid var(--border);border-radius:8px;p
 .step{display:flex;align-items:flex-start;gap:0;margin-bottom:10px}
 .gpts-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;padding:8px 14px;border:1px solid var(--border);border-radius:8px;color:var(--muted);margin:12px 0 20px;transition:border-color .15s}
 .gpts-link:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
-@media(max-width:600px){.two-col{grid-template-columns:1fr}}
-</style>
+@media(max-width:600px){.two-col{grid-template-columns:1fr}}</style>
 
 </head>
 <body>
