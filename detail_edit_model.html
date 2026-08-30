@@ -1,0 +1,143 @@
+<title>미드저니 V8.2 이미지 편집 모델</title>
+<link rel="stylesheet" href="./common.css">
+<style>
+.intro-sec{padding:2.5rem 0;border-bottom:1px solid var(--border)}
+.intro-label{font-family:var(--mono);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);margin-bottom:1rem}
+.intro-lead{font-size:14px;line-height:1.8;color:var(--ink);max-width:62ch;margin-bottom:1.5rem;word-break:keep-all}
+.update-note{background:rgba(181,80,46,.05);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:.85rem 1.1rem;font-size:13px;line-height:1.7;color:var(--ink);margin-bottom:1.5rem;word-break:keep-all}
+.update-note strong{font-weight:600}
+.update-note .date-tag{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);display:block;margin-bottom:.4rem}
+.feature-grid{display:grid;gap:.75rem;margin-bottom:1.5rem}
+@media(min-width:768px){.feature-grid{grid-template-columns:repeat(2,1fr)}}
+.feature-card{background:rgba(26,25,23,.03);border:1px solid rgba(26,25,23,.1);border-radius:10px;padding:1rem 1.15rem}
+.feature-num{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);margin-bottom:.35rem}
+.feature-title{font-size:13.5px;font-weight:600;letter-spacing:-.01em;margin-bottom:.35rem;color:var(--ink)}
+.feature-desc{font-size:12.5px;line-height:1.65;color:rgba(26,25,23,.65);word-break:keep-all}
+
+.body-sec{padding:2rem 0;border-bottom:1px solid rgba(26,25,23,.07)}
+.body-sec:last-child{border-bottom:none}
+.sec-eyebrow{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);margin-bottom:.75rem}
+.sec-title{font-size:1.15rem;font-weight:600;letter-spacing:-.02em;margin-bottom:1rem}
+.body-text{font-size:13.5px;line-height:1.8;color:rgba(26,25,23,.72);word-break:keep-all;margin-bottom:.75rem}
+
+.how-list{list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-top:.5rem}
+.how-list li{display:flex;align-items:flex-start;gap:.85rem;font-size:13.5px;line-height:1.65;color:rgba(26,25,23,.75);word-break:keep-all}
+.how-list li .idx{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--muted);flex-shrink:0;width:20px;padding-top:3px}
+.how-cmd{display:inline-block;font-family:var(--mono);font-size:12px;background:rgba(26,25,23,.05);border:1px solid rgba(26,25,23,.12);border-radius:5px;padding:1px 7px;color:var(--ink);font-weight:500;white-space:nowrap}
+
+.main-body{padding:1.5rem 0 4rem}
+</style>
+
+<header>
+  <div class="w hdr">
+    <a href="./index.html" class="back-link" target="_self">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      아카이브
+    </a>
+    <a href="./index.html" class="wm" target="_self">OHHEE's Recipe<span class="wm-vol">/ Vol.01</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="w">
+      <div class="eyebrow"><span class="eline"></span><span class="etxt">Midjourney — Update</span></div>
+      <h1 class="page-title">V8.2<br><em>이미지 편집 모델</em> 공개</h1>
+      <div class="prep-row">
+        <span class="prep-badge">Midjourney</span>
+        <span class="prep-badge">Edit Model</span>
+        <span class="prep-badge">Inpainting</span>
+        <span class="prep-badge">Outpainting</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro-sec">
+    <div class="w">
+      <div class="update-note">
+        <span class="date-tag">2026. 08. 29 — 품질 업데이트</span>
+        V8.2 편집 모델의 이미지 품질이 개선되었습니다. 지난 24시간 동안 문제가 있으셨다면 다시 사용해 보시고 피드백을 계속 보내 주세요!
+      </div>
+      <p class="intro-label">📌 2026. 08. 28 공개</p>
+      <p class="intro-lead">미드저니 첫 번째 V8.2 이미지 편집 모델이 공개됐습니다. 텍스트 지시만으로 이미지를 수정하거나, 최대 4장의 참조 이미지를 합성하고, 원하는 영역만 인페인팅·아웃페인팅할 수 있습니다.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <p class="feature-num">01</p>
+          <p class="feature-title">텍스트 지시로 이미지 편집</p>
+          <p class="feature-desc">프롬프트로 원하는 변경 사항을 설명하면 이미지를 직접 수정합니다.</p>
+        </div>
+        <div class="feature-card">
+          <p class="feature-num">02</p>
+          <p class="feature-title">최대 4개 이미지 참조 합성</p>
+          <p class="feature-desc">옴니레퍼런스를 대체하여 최대 4장의 참조 이미지로 새 이미지를 생성합니다.</p>
+        </div>
+        <div class="feature-card">
+          <p class="feature-num">03</p>
+          <p class="feature-title">인페인팅 &amp; 아웃페인팅</p>
+          <p class="feature-desc">이미지의 특정 영역만 수정하거나 캔버스를 원하는 방향으로 확장합니다.</p>
+        </div>
+        <div class="feature-card">
+          <p class="feature-num">04</p>
+          <p class="feature-title">퍼스널라이제이션 · 무드보드 · sref</p>
+          <p class="feature-desc">개인 취향 프로필, 무드보드, 스타일 레퍼런스를 편집 모델에서도 활용 가능합니다. 이 버전에서는 추가 프롬프트 설명을 함께 입력하면 더 효과적입니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="main-body">
+    <div class="w">
+
+      <div class="body-sec">
+        <p class="sec-eyebrow">How to use</p>
+        <h2 class="sec-title">편집 모델 사용 방법</h2>
+        <ul class="how-list">
+          <li>
+            <span class="idx">①</span>
+            <span><strong>드래그 업로드</strong> — 미드저니 프롬프트 창의 "프롬프트에 첨부" 영역으로 이미지를 드래그합니다.</span>
+          </li>
+          <li>
+            <span class="idx">②</span>
+            <span><strong>라이트박스 편집</strong> — 생성된 이미지를 라이트박스로 열고 오른쪽 하단의 <span class="how-cmd">편집</span> 버튼을 클릭합니다.</span>
+          </li>
+          <li>
+            <span class="idx">③</span>
+            <span><strong>편집 탭</strong> — 왼쪽의 <span class="how-cmd">Edit</span> 탭을 클릭하고 직접 이미지를 업로드합니다.</span>
+          </li>
+          <li>
+            <span class="idx">④</span>
+            <span><strong>디스코드</strong> — 프롬프트 끝에 <span class="how-cmd">--edit url...</span> 형식으로 입력합니다.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="body-sec">
+        <p class="sec-eyebrow">Note</p>
+        <h2 class="sec-title">피드백 채널</h2>
+        <p class="body-text">예상대로 동작하지 않는 이미지가 있으면 라이트박스 오른쪽의 😞 이모지를 누르거나, 라이트박스에서 이미지를 열어 <strong>Job ID / URL</strong>을 공유해 주세요.</p>
+        <p class="body-text">UI 개선 아이디어나 모델의 엣지케이스는 디스코드 <span class="how-cmd">#ideas-and-features</span> 채널에 남겨주세요. 편집 결과물 공유는 <span class="how-cmd">#edit-showcase</span>에서 가능합니다.</p>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="w ft">
+    <span class="fb">OHHEE's Recipe</span>
+    <span class="fc">Curated by OHHEE · 2026</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.copy-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const pre=document.getElementById(btn.dataset.target);
+    navigator.clipboard.writeText(pre.textContent.trim()).then(()=>{
+      btn.textContent='Copied';btn.classList.add('copied');
+      setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied')},1800);
+    });
+  });
+});
+</script>
