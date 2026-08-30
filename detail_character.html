@@ -1,0 +1,146 @@
+<title>미드저니 인물 일관성 유지하기 (1) · v7</title>
+<link rel="stylesheet" href="./common.css">
+<style>
+.notice-bar{background:rgba(26,25,23,.04);border:1px solid rgba(26,25,23,.12);border-radius:8px;padding:.85rem 1.1rem;font-size:13px;line-height:1.7;color:rgba(26,25,23,.72);word-break:keep-all;margin:2rem 0 0}
+.notice-bar strong{font-weight:600;color:var(--ink)}
+.notice-bar .label{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);display:block;margin-bottom:.35rem}
+
+.main-body{padding:2rem 0 4rem}
+.method-sec{padding:2.5rem 0;border-bottom:1px solid rgba(26,25,23,.07)}
+.method-sec:last-child{border-bottom:none}
+.method-num{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:rgba(26,25,23,.3);margin-bottom:.5rem}
+.method-title{font-size:clamp(1.05rem,2.5vw,1.3rem);font-weight:600;letter-spacing:-.025em;margin-bottom:.5rem}
+.method-sub{font-size:13px;color:var(--muted);margin-bottom:1.5rem;word-break:keep-all}
+.method-body{display:flex;flex-direction:column;gap:1.25rem}
+
+.body-text{font-size:13.5px;line-height:1.8;color:rgba(26,25,23,.72);word-break:keep-all}
+
+.param-row{display:flex;flex-direction:column;gap:.5rem;background:rgba(26,25,23,.03);border:1px solid rgba(26,25,23,.09);border-radius:8px;padding:.9rem 1rem}
+.param-name{font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--ink)}
+.param-desc{font-size:13px;line-height:1.7;color:rgba(26,25,23,.7);word-break:keep-all}
+.param-range{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+
+.tip-callout{border-left:3px solid rgba(26,25,23,.2);border-radius:0 8px 8px 0;padding:.75rem 1rem;font-size:13px;line-height:1.7;color:rgba(26,25,23,.7);background:rgba(26,25,23,.02);word-break:keep-all}
+
+.prompt-label{font-family:'Pretendard Variable',Pretendard,var(--sans);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.4rem}
+</style>
+
+<header>
+  <div class="w hdr">
+    <a href="./index.html" class="back-link" target="_self">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      아카이브
+    </a>
+    <a href="./index.html" class="wm" target="_self">OHHEE's Recipe<span class="wm-vol">/ Vol.01</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="w">
+      <div class="eyebrow"><span class="eline"></span><span class="etxt">Midjourney — 016</span></div>
+      <h1 class="page-title">미드저니 안에서<br><em>인물 일관성</em> 유지하기 (1)<br><span style="font-family:var(--mono);font-size:clamp(.8rem,1.5vw,1rem);font-weight:500;letter-spacing:.04em;color:var(--muted)">· v7 기준</span></h1>
+      <div class="prep-row">
+        <span class="prep-badge">Midjourney v7</span>
+        <span class="prep-badge">--cref</span>
+        <span class="prep-badge">Omni Reference</span>
+        <span class="prep-badge">룩북</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="w">
+    <div class="notice-bar">
+      <span class="label">⚠ 버전 안내</span>
+      <strong>V8.2 모델은 현재 옴니 레퍼런스를 지원하지 않습니다.</strong> 이 페이지의 내용은 v7 기준입니다. 옴니 레퍼런스와 --cref를 사용하려면 설정에서 모델을 v7으로 변경 후 작업하세요.
+    </div>
+  </div>
+
+  <div class="main-body">
+    <div class="w">
+
+      <div class="method-sec">
+        <p class="method-num">방법 01</p>
+        <h2 class="method-title">--cref · 캐릭터 레퍼런스</h2>
+        <p class="method-sub">참조 이미지 속 인물의 생김새를 그대로 유지한 채 새 이미지를 생성합니다. 여러 컷의 룩북, 캐릭터 시리즈 작업에 가장 기본이 되는 파라미터입니다.</p>
+        <div class="method-body">
+          <div class="param-row">
+            <span class="param-name">--cref 이미지URL</span>
+            <span class="param-desc">참조하고 싶은 인물 이미지의 URL을 입력합니다. 미드저니에서 생성한 이미지를 우클릭 → 이미지 주소 복사 후 붙여넣으면 됩니다.</span>
+          </div>
+          <div class="param-row">
+            <span class="param-name">--cw 0~100</span>
+            <span class="param-desc">캐릭터 레퍼런스의 반영 범위를 조절합니다.</span>
+            <span class="param-range">0 = 얼굴만 참조 &nbsp;/&nbsp; 100 = 얼굴 + 의상까지 복사 (기본값)</span>
+          </div>
+          <div class="tip-callout">
+            의상은 유지하되 얼굴만 참조하고 싶을 때는 <strong>--cw 0</strong>을 사용하세요. 반대로 캐릭터 전체를 동일하게 유지하고 싶다면 기본값(100)을 그대로 씁니다.
+          </div>
+          <div>
+            <p class="prompt-label">프롬프트 예시</p>
+            <div class="prompt-block">
+              <pre class="prompt-pre" id="p01">a woman walking in a sunlit Parisian alley, editorial fashion photography, natural light, film grain --cref https://이미지URL --cw 0 --ar 2:3 --v 7</pre>
+              <button class="copy-btn" data-target="p01">Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="method-sec">
+        <p class="method-num">방법 02</p>
+        <h2 class="method-title">옴니 레퍼런스 (Omni Reference)</h2>
+        <p class="method-sub">v7에서 새롭게 도입된 기능으로, 최대 5장의 이미지를 동시에 참조해 인물의 일관성을 더 자연스럽게 유지할 수 있습니다.</p>
+        <div class="method-body">
+          <p class="body-text">--cref가 단일 이미지를 기준으로 인물을 복제하는 방식이라면, 옴니 레퍼런스는 여러 각도·상황의 참조 이미지를 동시에 넣어 더 유연하고 정교하게 인물을 유지합니다. 특히 조명이나 각도가 달라져도 동일 인물처럼 느껴지는 결과를 얻을 때 효과적입니다.</p>
+          <div class="param-row">
+            <span class="param-name">이미지URL --cref 이미지URL2 이미지URL3</span>
+            <span class="param-desc">프롬프트 앞에 기준 이미지 URL을 넣고, --cref 뒤에 추가 참조 이미지를 이어서 입력합니다. 최대 5장까지 사용할 수 있습니다.</span>
+          </div>
+          <div class="tip-callout">
+            참조 이미지는 동일 인물의 <strong>다양한 각도와 표정</strong>을 담은 사진을 사용할수록 결과가 좋습니다. 배경이 단순하고 인물이 크게 잡힌 이미지가 인식률이 높습니다.
+          </div>
+          <div>
+            <p class="prompt-label">프롬프트 예시</p>
+            <div class="prompt-block">
+              <pre class="prompt-pre" id="p02">이미지URL1 a woman sitting in a cozy cafe, warm afternoon light, reading a book, lifestyle photography --cref 이미지URL2 이미지URL3 --ar 4:5 --v 7</pre>
+              <button class="copy-btn" data-target="p02">Copy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="method-sec">
+        <p class="method-num">참고</p>
+        <h2 class="method-title">인물 일관성을 높이는 팁</h2>
+        <div class="method-body">
+          <ul class="points">
+            <li>참조 이미지는 <strong>배경이 단순하고 인물이 정면을 향한</strong> 사진을 쓸수록 인식률이 높습니다.</li>
+            <li>--cref와 --sref를 함께 쓰면 인물 일관성 + 화풍까지 동시에 고정할 수 있습니다.</li>
+            <li>--cw 값은 50~70 사이에서 의상 변화와 인물 유지를 균형 있게 조절하는 데 자주 사용합니다.</li>
+            <li>여러 장의 룩북을 만들 때는 첫 번째 생성 이미지를 기준 --cref 이미지로 활용하면 일관성이 유지됩니다.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="w ft">
+    <span class="fb">OHHEE's Recipe</span>
+    <span class="fc">Curated by OHHEE · 2026</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.copy-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const pre=document.getElementById(btn.dataset.target);
+    navigator.clipboard.writeText(pre.textContent.trim()).then(()=>{
+      btn.textContent='Copied';btn.classList.add('copied');
+      setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied')},1800);
+    });
+  });
+});
+</script>
