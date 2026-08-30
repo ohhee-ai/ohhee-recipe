@@ -3,6 +3,7 @@
 
 :root{
   --paper:#f4f2ec;--ink:#1a1917;--accent:#b5502e;
+  --muted:#6b6760;--border:#dedad2;--code-bg:#edeae2;--tag-bg:#ede9e0;
   --sans:'Inter',system-ui,sans-serif;
   --serif:'Instrument Serif',Georgia,serif;
   --mono:'JetBrains Mono',monospace;
