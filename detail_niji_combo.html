@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Niji7 조합 (1)</title>
 <link rel="stylesheet" href="./common.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
-<style>*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+<style>:root{--rule:var(--border);--ink2:rgba(26,25,23,.72);--ink3:var(--muted);--r:8px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
 
 /* HEADER */
 .hdr{position:sticky;top:0;z-index:100;background:rgba(244,242,236,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);padding:14px 24px;display:flex;align-items:center;gap:16px}
@@ -15,7 +15,7 @@ body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;fon
 .back:hover{background:var(--rule)}
 .back svg{width:14px;height:14px;flex-shrink:0}
 .hdr-title{font-family:'Instrument Serif',serif;font-size:17px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tool-badge{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6a3d9a;background:#f0eaf8;border:1px solid #d4c0ee;border-radius:20px;padding:3px 10px;white-space:nowrap}
+.tool-badge{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(26,25,23,.6);background:rgba(26,25,23,.04);border:1px solid rgba(26,25,23,.15);border-radius:20px;padding:3px 10px;white-space:nowrap}
 
 /* HERO */
 .hero{padding:56px 24px 40px;max-width:900px;margin:0 auto}
@@ -23,18 +23,18 @@ body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;fon
 .hero-title{font-family:'Instrument Serif',serif;font-size:clamp(26px,5vw,38px);line-height:1.25;color:var(--ink);margin-bottom:20px}
 .hero-title em{font-style:italic;color:#6a3d9a}
 .hero-desc{font-size:14.5px;color:var(--ink2);line-height:1.8;max-width:680px;margin-bottom:24px}
-.hero-warning{background:#fff8f0;border:1.5px solid #f0c090;border-radius:var(--r);padding:16px 18px;font-size:13px;color:#7a4010;line-height:1.7;max-width:680px}
-.hero-warning strong{font-weight:600;color:#5a2c08}
+.hero-warning{background:rgba(181,80,46,.05);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:.85rem 1.1rem;font-size:13px;color:var(--ink);line-height:1.7;max-width:680px;word-break:keep-all}
+.hero-warning strong{font-weight:600}
 
 /* MOOD GRID */
 .grid-wrap{max-width:900px;margin:0 auto;padding:8px 24px 64px}
-.grid-label{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:20px;font-family:'JetBrains Mono',monospace}
+.grid-label{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;font-family:var(--mono)}
 
-.mood-card{background:#fff;border:1.5px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:24px;transition:box-shadow .2s}
+.mood-card{background:rgba(255,255,255,.5);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px;transition:box-shadow .2s}
 .mood-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08)}
 
-.card-header{padding:20px 24px 16px;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:14px}
-.card-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--ink3);letter-spacing:.06em;flex-shrink:0;width:28px}
+.card-header{padding:20px 24px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:14px}
+.card-num{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--muted);letter-spacing:.06em;flex-shrink:0;width:28px}
 .card-mood-name{font-family:'Instrument Serif',serif;font-size:20px;flex:1}
 .mood-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
 
@@ -42,21 +42,21 @@ body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;fon
 @media(max-width:600px){.card-body{grid-template-columns:1fr}}
 
 .card-img-area{}
-.img-ph{background:var(--code-bg);border:1.5px dashed var(--rule);border-radius:8px;aspect-ratio:3/4;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--ink3);font-size:12px}
+.img-ph{background:var(--code-bg);border:1.5px dashed var(--border);border-radius:8px;aspect-ratio:3/4;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--ink3);font-size:12px}
 .img-ph svg{width:28px;height:28px;opacity:.3;margin-bottom:8px}
 .img-ph .ph-name{font-family:'JetBrains Mono',monospace;font-size:10px;margin-top:4px;opacity:.7}
 
 .card-info{display:flex;flex-direction:column;gap:14px}
 
 .sref-block{}
-.sref-label{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);font-family:'JetBrains Mono',monospace;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
-.sref-code{background:var(--ink);color:#f0ead8;font-family:'JetBrains Mono',monospace;font-size:12.5px;padding:12px 14px;border-radius:6px;word-break:break-all;line-height:1.6}
-.prompt-label{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);font-family:'JetBrains Mono',monospace;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
-.prompt-box{background:var(--code-bg);border:1px solid var(--rule);border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:11.5px;padding:12px 14px;line-height:1.7;color:var(--ink2);white-space:pre-wrap;word-break:break-word}
-.no-prompt{background:var(--code-bg);border:1px dashed var(--rule);border-radius:6px;padding:12px 14px;font-size:12px;color:var(--ink3);font-family:'JetBrains Mono',monospace;text-align:center}
+.sref-label{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-family:var(--mono);margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.sref-code{background:var(--code-bg);color:var(--ink);border:1px solid var(--border);font-family:var(--mono);font-size:12.5px;padding:12px 14px;border-radius:6px;word-break:break-all;line-height:1.6}
+.prompt-label{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-family:var(--mono);margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.prompt-box{background:var(--code-bg);border:1px solid var(--border);border-radius:6px;font-family:var(--mono);font-size:11.5px;padding:12px 14px;line-height:1.7;color:rgba(26,25,23,.72);white-space:pre-wrap;word-break:break-word}
+.no-prompt{background:var(--code-bg);border:1px dashed var(--border);border-radius:6px;padding:12px 14px;font-size:12px;color:var(--muted);font-family:var(--mono);text-align:center}
 
 /* COPY BTN */
-.copy-btn{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:transparent;border:1px solid var(--accent);border-radius:4px;padding:2px 7px;cursor:pointer;font-family:'JetBrains Mono',monospace;transition:all .15s}
+.copy-btn{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(26,25,23,.5);background:rgba(244,242,236,.9);border:1px solid rgba(26,25,23,.15);border-radius:9999px;padding:2px 8px;cursor:pointer;font-family:var(--mono);transition:all .15s}
 /* MOOD COLORS */
 .dot-neon{background:linear-gradient(135deg,#7c3aed,#db2777)}
 .dot-90s{background:linear-gradient(135deg,#ec4899,#f97316)}
@@ -69,8 +69,8 @@ body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;fon
 
 /* NOTICE */
 .notice{max-width:900px;margin:0 auto 40px;padding:0 24px}
-.notice-box{background:#f9f5ff;border:1.5px solid #d4c0ee;border-radius:var(--r);padding:16px 20px;font-size:13px;color:#4a2878;line-height:1.7}
-.notice-box strong{font-weight:600}
+.notice-box{background:var(--code-bg);border:1px solid var(--border);border-radius:8px;padding:16px 20px;font-size:13px;color:var(--ink);line-height:1.7}
+.notice-box strong{font-weight:600;color:var(--ink)}
 
 footer{text-align:center;padding:32px 24px 64px;font-size:12px;color:var(--ink3)}
 footer a{color:var(--ink3);text-decoration:none}</style>
@@ -78,7 +78,7 @@ footer a{color:var(--ink3);text-decoration:none}</style>
 <body>
 
 <header class="hdr">
-  <a class="back" href="../index.html" target="_self">
+  <a class="back" href="./index.html" target="_self">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3L5 8l5 5"/></svg>
     아카이브
   </a>
@@ -341,7 +341,7 @@ footer a{color:var(--ink3);text-decoration:none}</style>
 </div>
 
 <footer>
-  <p>OHHEE's Recipe · <a href="../index.html" target="_self">아카이브로 돌아가기</a></p>
+  <p>OHHEE's Recipe · <a href="./index.html" target="_self">아카이브로 돌아가기</a></p>
 </footer>
 
 <script>
