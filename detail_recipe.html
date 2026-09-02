@@ -1,0 +1,461 @@
+<title>오희의 레시피</title>
+<link rel="stylesheet" href="./common.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500&display=swap">
+<style>
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#1a1917;--ink:#f0ede6;--accent:#d4714a;--muted:#9b9690;
+    --border:#333028;--code-bg:#252320;--tag-bg:#222019
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#1a1917;--ink:#f0ede6;--accent:#d4714a;--muted:#9b9690;
+  --border:#333028;--code-bg:#252320;--tag-bg:#222019
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;min-height:100vh}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.site-header{border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;gap:1rem}
+.site-header a{color:var(--muted);font-size:.85rem;letter-spacing:.04em}
+.site-header a:hover{color:var(--accent);text-decoration:none}
+.site-header .sep{color:var(--border)}
+
+.hero{padding:3rem 2rem 2rem;max-width:900px;margin:0 auto}
+.eyebrow{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
+.hero h1{font-family:'Noto Serif KR',var(--serif);font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.2;font-weight:400;margin-bottom:1rem;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.tag{background:var(--tag-bg,#edeae2);color:var(--muted);font-size:.72rem;padding:.25rem .65rem;border-radius:2px;letter-spacing:.03em}
+.summary-box{background:var(--ink);color:var(--paper);padding:1.5rem 2rem;border-radius:4px;margin-bottom:3rem}
+.summary-box p{font-size:.9rem;line-height:1.7;opacity:.9}
+
+.content{max-width:900px;margin:0 auto;padding:0 2rem 5rem}
+.section{margin-bottom:3rem}
+.section-title{font-family:'Noto Serif KR',var(--serif);font-size:1.35rem;font-weight:400;margin-bottom:1.5rem;color:var(--ink);letter-spacing:.02em}
+.sub-heading{font-size:1rem;font-weight:600;color:var(--muted);margin:1.5rem 0 .75rem;letter-spacing:.03em;text-transform:uppercase}
+.section p{font-size:.9rem;color:var(--muted);line-height:1.75;margin-bottom:1rem}
+.info-list{padding-left:1.4rem;margin-bottom:1.2rem}
+.info-list li{font-size:.88rem;color:var(--muted);line-height:1.75;margin-bottom:.4rem}
+
+.img-single{margin:1.25rem 0;border-radius:4px;overflow:hidden;border:1px solid var(--border);max-width:520px}
+.img-single img{width:100%;display:block}
+.img-pair{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1.25rem 0}
+.img-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1.25rem 0}
+@media(max-width:600px){.img-pair,.img-grid{grid-template-columns:1fr}}
+.img-item{border-radius:4px;overflow:hidden;border:1px solid var(--border)}
+.img-item img{width:100%;display:block;object-fit:cover}
+
+.prompt-box{background:var(--code-bg,#edeae2);border:1px solid var(--border);border-radius:4px;margin:1.25rem 0;overflow:hidden}
+.prompt-header{display:flex;justify-content:space-between;align-items:center;padding:.5rem 1rem;border-bottom:1px solid var(--border)}
+.prompt-label{font-family:var(--mono);font-size:.7rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.copy-btn{font-family:var(--mono);font-size:.7rem;color:var(--accent);background:none;border:1px solid var(--accent);padding:.2rem .6rem;border-radius:2px;cursor:pointer;transition:all .15s}
+.copy-btn:hover{background:var(--accent);color:#fff}
+.prompt-body{padding:1rem;font-family:var(--mono);font-size:.78rem;line-height:1.7;color:var(--ink);white-space:pre-wrap;word-break:break-word}
+.divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
+</style>
+
+<header class="site-header">
+  <a href="index.html">← 전체 레시피</a>
+  <span class="sep">|</span>
+  <span style="font-size:.85rem;color:var(--muted)">OHHEE AI 레시피</span>
+</header>
+
+<div class="hero">
+  <p class="eyebrow">OHHEE&apos;s Recipe</p>
+  <h1>오희의 레시피</h1>
+  <div class="meta">
+    <span class="tag">Midjourney</span>
+    <span class="tag">무드보드</span>
+    <span class="tag">--profile</span>
+    <span class="tag">--sref</span>
+  </div>
+  <div class="summary-box">
+    <p>OHHEE가 직접 셋팅한 무드보드 코드와 스타일 레퍼런스 모음입니다.<br>
+    각 섹션의 <strong>--p 코드</strong> 또는 <strong>--sref 코드</strong>를 프롬프트에 추가하면 해당 무드의 이미지를 생성할 수 있습니다.</p>
+  </div>
+</div>
+
+<main class="content">
+<div class="section">
+<h2 class="section-title">[ROMANTIC MUTE PINK]</h2>
+<div class="img-single"><img src="./images/recipe_01_Green_White_Modern_Elegant_Aesthetic_Photo_Collage.png" loading="lazy" alt=""></div>
+<h3 class="sub-heading">[ROMANTIC MUTE PINK 활용 예]</h3>
+<div class="img-single"><img src="./images/recipe_02_ohhee_Garden_party_oil_painting.png" loading="lazy" alt=""></div>
+<p>프롬프트에 oil painting을 추가하여 유화로 만들어도 색감이 아름다워요. 🙂</p>
+<div class="prompt-box" id="r01">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r01">Copy</button>
+  </div>
+  <pre class="prompt-body">An oil painting on canvas. group of young people in pastel colors
+are having an outdoor picnic, surrounded by lush greenery and pink bushes.
+some are standing on plush blankets while others sit at tables covered in soft fabrics.
+the scene is set near the water&#x27;s edge, creating a serene atmosphere.
+in the background, there&#x27;s a small gazebo that adds to the picturesque setting.
+--ar 16:9 --profile 2nm7lr4</pre>
+</div>
+<div class="img-single"><img src="./images/recipe_03_ohhee_Imagine_stepping_into_Albert-mile_Artigues_painting_Fl.jpg" loading="lazy" alt=""></div>
+<p>미세한 톤 다운을 원하는 경우, 16:9 등 가로 길이가 긴 비율의 이미지 작업시 <br><strong>--p rapzz44</strong> 를 추가하여 함께 사용해주시면 좋습니다.</p>
+<h3 class="sub-heading">무드보드 코드 : --p 2nm7lr4</h3>
+<ul class="info-list">
+<li>OHHEE가 직접 셋팅한 무드보드 - - p 코드 입니다.</li>
+<li>뮤트한 딸기우유 핑크 컬러가 잘 표현되는 무드보드이며 페미닌 무드의 룩북 작업, <br>깔끔하면서 선명한 로맨틱 무드, 코티지 코어 이미지 작업시 유용합니다.</li>
+<li>인종/베이스 : European / Caucasian, 뚜렷하고 여성스러운 이목구비로 생성되도록 셋팅하였습니다.</li>
+</ul>
+<div class="prompt-box" id="r02">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r02">Copy</button>
+  </div>
+  <pre class="prompt-body">--p 2nm7lr4</pre>
+</div>
+<div class="img-single"><img src="./images/recipe_04_ohhee_Puff_dress_brand_lookbook_koean_girl_in_the_backyard_-.jpg" loading="lazy" alt=""></div>
+<p><br></p>
+<div class="prompt-box" id="r03">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r03">Copy</button>
+  </div>
+  <pre class="prompt-body">dreamcore scene of a girl sleeping on a floating bed under a starry sky,
+moonlight pouring like water, soft pastel clouds, glowing stars,
+cinematic soft lighting, ethereal atmosphere, ultra detailed
+--ar 2:3 --raw --profile 2nm7lr4</pre>
+</div>
+</div>
+<hr class="divider">
+<div class="section">
+<h2 class="section-title">[VINTAGE FILM CAMERA &amp; COQUETTE MOOD]</h2>
+<h3 class="sub-heading">[VINTAGE FILM CAMERA &amp; COQUETTE MOOD 활용 예]</h3>
+<div class="img-single"><img src="./images/recipe_05_0_2.png" loading="lazy" alt=""></div>
+<div class="prompt-box" id="r04">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r04">Copy</button>
+  </div>
+  <pre class="prompt-body">a softly lit vintage still-life arrangement on a rustic plaster windowsill.
+sheer white curtains gently glowing with diffused natural daylight.
+draped ivory fabric cascading across the ledge.
+an oval antique gold-framed mirror leaning against the wall.
+a pastel pink frosted glass vase, an amber marbled glass decanter,
+a small white ceramic vase with daisy flowers, and a tall candlestick holding a mauve taper candle.
+additional details include a small perfume bottle. warm muted tones,
+serene and poetic atmosphere, high-detail photography, soft shadows, textured surfaces
+--ar 4:3 --raw --p qj5ci6x</pre>
+</div>
+<div class="img-single"><img src="./images/recipe_06_ohhee_in_backyard_sign_board_love_--ar_43_--profile_15v13z9_.jpg" loading="lazy" alt=""></div>
+<h3 class="sub-heading">무드보드 코드 : --p qj5ci6x</h3>
+<ul class="info-list">
+<li>OHHEE가 직접 셋팅한 무드보드 --p 코드 입니다.</li>
+<li>미세한 그레인, 은은한 자연광으로 빈티지한 분위기를 극대화 하도록 셋팅했습니다.</li>
+<li>전체적으로 뮤트한 톤이라 원색의 이미지가 생성되는 다른 무드보드나 - - sref 와 함께 사용하면, <br>쨍한 채도를 낮춰주면서 밸런스가 좋습니다.</li>
+<li>화질 개선을 위해 미드저니에서 업스케일을 진행할 경우 이미지 자체의 그레인 효과가 사라지기도 합니다. 업스케일 하지 않고 사용하거나, 업스케일 후 포토샵으로 그레인 효과를 추가해도 좋습니다.</li>
+<li>인종/베이스 : Caucasian, 인형처럼 예쁜 외모는 아니나 빈티지 무드에 어울리는 정감 가는 외모를 의도하고 셋팅 하였습니다.</li>
+</ul>
+<div class="prompt-box" id="r05">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r05">Copy</button>
+  </div>
+  <pre class="prompt-body">--p qj5ci6x</pre>
+</div>
+<div class="img-single"><img src="./images/recipe_07_ohhee_fantasy_dreamcore_portrait_of_a_girl_looking_at_someon.jpg" loading="lazy" alt=""></div>
+<div class="prompt-box" id="r06">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r06">Copy</button>
+  </div>
+  <pre class="prompt-body">fantasy dreamcore portrait of a girl looking at someone through
+floating glowing stars, soft light separating them, emotional longing, surreal atmosphere,
+cinematic lighting --ar 4:3 --sref 4151406827 --p qj5ci6x</pre>
+</div>
+<p><strong>\<\<\<  [PROMPT] </strong></p>
+<div class="prompt-box" id="r07">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r07">Copy</button>
+  </div>
+  <pre class="prompt-body">a white blanket with the word &quot;love&quot; embroidered on it hangs outside an iron gate
+in front of green hedges and flowers, pink potted plants, and yellow hearts
+--ar 4:3 --p qj5ci6x</pre>
+</div>
+</div>
+<hr class="divider">
+<div class="section">
+<h2 class="section-title">[ROMANTIC WARM PINK]</h2>
+<h3 class="sub-heading">[ROMANTIC WARM PINK 활용 예]</h3>
+<div class="img-single"><img src="./images/recipe_08_ohhee_two_young_girls_participating_in_a_vintage_flea_market.jpg" loading="lazy" alt=""></div>
+<div class="prompt-box" id="r08">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r08">Copy</button>
+  </div>
+  <pre class="prompt-body">two young girls participating in a vintage flea market in a blooming garden,
+standing beside a small wooden stall draped with lace tablecloth,
+antique porcelain teacups, embroidered linens, handmade dolls and dried flower bouquets
+displayed neatly, soft breeze moving their long wavy hair,
+one girl wearing a white vintage cotton dress with delicate eyelet lace sleeves,
+the other in a pale blush dress with ribbon sash, sunlight filtering through tree leaves
+casting dappled light, pastel bunting flags gently swaying above,
+warm golden hour atmosphere, --ar 4:3 --raw --p 8euhz28 --stylize 200</pre>
+</div>
+<h3 class="sub-heading">무드보드 코드 : --p 8euhz28</h3>
+<ul class="info-list">
+<li>OHHEE가 직접 셋팅한 무드보드 - - p 코드 입니다.</li>
+<li>ROMANTIC MUTE PINK 무드보드와 비슷한 듯 하지만 살짝 더 웜한 핑크 계열입니다.<br>페미닌, 로맨틱 무드의 니트 룩북 작업, 발레코어 이미지 작업시 유용합니다.</li>
+<li>인종/베이스 : European / Caucasian, 가녀리고 여성스러운 이목구비로 생성되도록 셋팅하였습니다.</li>
+<li>다른 무드보드, 뉴트럴 컬러 계열 스타일과 함께 사용시, 감도높은 아웃풋이 생성됩니다. <br>특히 OHHEE가 직접 셋팅한 <strong>--sref 7237300710 </strong>번 스타일과 함께 사용하여 이미지를 생성할시 <br>차분하고 채도가 정돈된 느낌의 컬러팔레트가 완성 됩니다.</li>
+</ul>
+<div class="prompt-box" id="r09">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r09">Copy</button>
+  </div>
+  <pre class="prompt-body">--p 8euhz28</pre>
+</div>
+<div class="img-single"><img src="./images/recipe_09_ohhee_a_young_ballerina_in_a_pastel_pink_fluffy_jacket_and_m.jpg" loading="lazy" alt=""></div>
+<div class="prompt-box" id="r10">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r10">Copy</button>
+  </div>
+  <pre class="prompt-body">a young ballerina in a pastel pink, fluffy jacket and mini skirt,
+loosely tied brown hair with soft wispy strands framing her face,
+stands gracefully on the ballet studio floor. the soft light accentuates her delicate features
+as she poses with an elegant posture. her hair is styled in loose waves that fall around her shoulders.
+she wears a white tank top underneath the cardigan,
+adding to its playful yet sophisticated appearance. behind her,
+there is another dancer wearing similar attire, creating a harmonious atmosphere
+of elegance within the dance space. --ar 3:4 --p 8euhz28</pre>
+</div>
+</div>
+<hr class="divider">
+<div class="section">
+<h2 class="section-title">[ROMANTIC WARM PINK + --sref 7237300710]</h2>
+<h3 class="sub-heading">[ROMANTIC WARM PINK + --sref 7237300710 활용 예]</h3>
+<div class="img-single"><img src="./images/recipe_10_ohhee_a_young_woman_standing_in_a_cozy_bedroom_wearing_soft_.jpg" loading="lazy" alt=""></div>
+<p><strong>[PROMPT] </strong></p>
+<div class="prompt-box" id="r11">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r11">Copy</button>
+  </div>
+  <pre class="prompt-body">a young woman standing in a cozy bedroom, wearing soft pink striped pajamas with
+lace details, arms crossed, natural expression, slightly messy long brown hair,
+fair skin with subtle blush, soft daylight coming through the window,
+cottagecore interior, floral bedding, vintage books stacked on the bed,
+calm and quiet morning eye-level shot, ultra detailed, soft shadows, no depth of field
+--ar 3:4 --raw --sref 7237300710 --p 8euhz28</pre>
+</div>
+<h3 class="sub-heading">[ROMANTIC WARM PINK + 두개의 스타일 코드 활용 예]</h3>
+<div class="img-single"><img src="./images/recipe_11_ohhee_Puff_dress_brand_lookbook_girl_in_the_backyard_--ar_34.jpg" loading="lazy" alt=""></div>
+<p><strong>[PROMPT] </strong></p>
+<div class="prompt-box" id="r12">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r12">Copy</button>
+  </div>
+  <pre class="prompt-body">a young blonde woman wearing an oversized baby pink dress and white socks,
+standing in the backyard with many plants around, portraiture iconography
+lookbook style, cottagecore style --ar 3:4 --sref 3539828485 7237300710 --p 8euhz28</pre>
+</div>
+<h3 class="sub-heading">스타일 코드 : --sref 7237300710</h3>
+<ul class="info-list">
+<li>OHHEE가 직접 셋팅한 무드보드<strong> --p 8euhz28</strong> 에 <br>직접 제작한 스타일 <strong>--sref 7237300710 </strong>을 함께 사용하면 생성되는 아웃풋입니다.</li>
+<li>아동복, 홈웨어 / 원마일 웨어 브랜드, 걸리시한 디자이너 브랜드의 룩북에 적합하도록<br>무드보드 빌딩과 -- sref 코드 셋팅을 함께했습니다.<br>프롬프트 가장 뒤에 <strong>--p 1ayuare --sref 7237300710 </strong>를 붙여 사용합니다.</li>
+<li>인종/베이스는 ROMANTIC WARM PINK 무드를 단독 사용하는 것과 크게 다르지 않습니다.</li>
+</ul>
+<div class="prompt-box" id="r13">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r13">Copy</button>
+  </div>
+  <pre class="prompt-body">--p 8euhz28 --sref 7237300710</pre>
+</div>
+<p><strong>[PROMPT] </strong></p>
+<div class="prompt-box" id="r14">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r14">Copy</button>
+  </div>
+  <pre class="prompt-body">a stack of fluffy, soft pink and white crocheted blankets is placed on an
+elegant wooden stool in the corner of a sunny room with potted plants.
+the scene exudes warmth and comfort, creating a cozy atmosphere.
+this composition creates a serene space where you can relax or cuddle up under
+these luxurious blankets. the image features focus stacking,
+high-resolution photography, and detailed textures.
+--ar 3:4 --sref 7237300710 --p 8euhz28</pre>
+</div>
+<p>‘a stack of fluffy, soft pink and white crocheted blankets’ 을 다른 소품으로 변경하여<br>사용할 수 있습니다. <br>내가 판매하는 제품, 내가 합성 작업을 진행하고 싶은 제품과 비슷한 사이즈의 소품으로 변경하여 <br>이미지를 생성 한 후 나노바나나로 제품만 교체하면 스튜디오에서 촬영한 듯한 아웃풋이 탄생합니다.</p>
+</div>
+<hr class="divider">
+<div class="section">
+<h2 class="section-title">[SHABBY CHIC &amp; COTTAGE MOOD]</h2>
+<h3 class="sub-heading">[SHABBY CHIC &amp; COTTAGE MOOD 활용 예]</h3>
+<div class="img-single"><img src="./images/recipe_12_ohhee_in_backyard_sign_board_love_--ar_43_--sref_8013884104_.jpg" loading="lazy" alt=""></div>
+<p><strong>[PROMPT]</strong></p>
+<div class="prompt-box" id="r15">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r15">Copy</button>
+  </div>
+  <pre class="prompt-body">in backyard, sign board &quot;love&quot; --ar 4:3 --sref 8013884104 --p qj5ci6x</pre>
+</div>
+<p>”love” 대신 내 이름, 내 닉네임, 우리 브랜드 명을 넣을 수 있습니다.</p>
+<h3 class="sub-heading">스타일 코드 : --sref 8013884104</h3>
+<ul class="info-list">
+<li>OHHEE가 직접 셋팅한 스타일입니다. <br>핑크, 민트, 레몬 옐로우 컬러가 키 컬러이며 floral fabric / lace curtain / shabby fabric 과 같은<br>빈티지 로맨틱 인테리어(Vintage Romantic) 키워드를 프롬프트에 넣지 않아도<br>자연스럽게 생성될 수 있도록 셋팅했습니다.</li>
+<li>코티지코어 + 쉐비시크 + 빈티지 로맨틱 무드를 살린 스타일입니다.</li>
+<li>인종 베이스 :  White European / Scandinavian</li>
+</ul>
+<div class="prompt-box" id="r16">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r16">Copy</button>
+  </div>
+  <pre class="prompt-body">--sref 8013884104</pre>
+</div>
+<p><strong>[PROMPT] </strong></p>
+<div class="prompt-box" id="r17">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r17">Copy</button>
+  </div>
+  <pre class="prompt-body">Detective and boy --ar 3:4 --sref 8013884104</pre>
+</div>
+<p>핑크색 가게, 핑크 색 문 앞 이라는 프롬프트를 넣지 않아도 실내라는 조건을 입력하지 않으면 <br>배경으로 자연스럽게 키컬러로 셋팅한 핑크, 민트 톤 건물이 생성됩니다.</p>
+</div>
+<hr class="divider">
+<div class="section">
+<h2 class="section-title">[WHIMSY:@//DREAMCORE MOOD]</h2>
+<h3 class="sub-heading">[WHIMSY:@//DREAMCORE MOOD활용 예]</h3>
+<div class="img-single"><img src="./images/recipe_13_ohhee_a_pastel-colored_plush_teddy_bear_living_inside_a_gian.jpg" loading="lazy" alt=""></div>
+<p><strong>[PROMPT] </strong></p>
+<div class="prompt-box" id="r18">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r18">Copy</button>
+  </div>
+  <pre class="prompt-body">a pastel-colored plush teddy bear living inside a giant layered cake,
+rooms carved into sponge layers, dripping cream walls, candy windows,
+whimsical architecture, surreal edible world, soft pastel tones, playful, dreamy,
+slightly absurd atmosphere --p xfz9546 4wiodpk
+--sref https://s.mj.run/jy0UBq0ZOcQ https://s.mj.run/NqYA0tO6XIo --v 7</pre>
+</div>
+<p><strong>[PROMPT] \>\>\></strong></p>
+<div class="prompt-box" id="r19">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r19">Copy</button>
+  </div>
+  <pre class="prompt-body">a baby lambs lost inside a surreal mirror maze, reflections multiplying endlessly,
+floating stars and moons inside mirrors, a surreal pastel-colored background,
+soft glowing haze, dreamcore aesthetic,
+slightly uncanny fairytale mood, cinematic composition, ultra detailed,
+no text, no watermark --ar 3:4 --raw --profile 4wiodpk xfz9546 --v 7</pre>
+</div>
+<h3 class="sub-heading">무드보드 코드 : --p xfz9546 4wiodpk</h3>
+<ul class="info-list">
+<li>OHHEE가 직접 셋팅한 무드보드 - - p 코드 qke1izt 에 <br>미드저니 익스플로러에서 수집한 중국 유저의 코드를 조합했습니다.<br><strong>--p xfz9546</strong> 를 단독 사용하여도 비슷한 분위기의 이미지가 생성되지만 <br>두 코드를 함께 사용하면 좀더 화려한 색감의 이미지가 생성됩니다.</li>
+<li>동화, 드림코어 작업, 파스텔 톤의 키치한 느낌의 작업을 할 때 유용한 무드보드 입니다.</li>
+<li>인종/베이스 : European / Caucasian / freckles skin, 과장된 메이크업이 특징입니다.</li>
+<li>색감의 일관성, 안정화를 위해 원하는 색감의 이미지를 레퍼런스 이미지로 첨부하여 작업하면<br>훨씬 안정적인 색감의 결과물이 나옵니다. <br></li>
+</ul>
+<div class="img-single"><img src="./images/recipe_14_ohhee_girl_close-up_shot_--ar_43_--profile_qke1izt_4wiodpk_-.jpg" loading="lazy" alt=""></div>
+<div class="prompt-box" id="r20">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r20">Copy</button>
+  </div>
+  <pre class="prompt-body">girl, close-up shot --ar 4:3 --profile xfz9546 4wiodpk --v 7</pre>
+</div>
+<div class="img-single"><img src="./images/recipe_15_ohhee_a_pastel_teddy_bear_hiding_inside_a_giant_cupcake_peek.jpg" loading="lazy" alt=""></div>
+<p><strong>[PROMPT] </strong></p>
+<div class="prompt-box" id="r21">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r21">Copy</button>
+  </div>
+  <pre class="prompt-body">a pastel teddy bear hiding inside a giant cupcake, peeking out from soft
+frosting layers, whipped cream textures surrounding it,
+cozy surreal dessert environment, pastel tones, whimsical calm mood,
+--sref https://s.mj.run/jy0UBq0ZOcQ https://s.mj.run/NqYA0tO6XIo
+--ar 3:4 --raw --profile xfz9546 4wiodpk --v 7</pre>
+</div>
+<div class="img-single"><img src="./images/recipe_16_ohhee_a_baby_animal_lost_inside_a_surreal_mirror_maze_reflec.jpg" loading="lazy" alt=""></div>
+</div>
+<hr class="divider">
+<div class="section">
+<h2 class="section-title">[PASTEL BLUE /FLORAL MOOD]</h2>
+<div class="img-pair">
+<div class="img-item"><img src="./images/recipe_18_cottage_floral_mood.png" loading="lazy" alt=""></div>
+<div class="img-item"><img src="./images/recipe_18_cottage_floral_mood.png" loading="lazy" alt=""></div>
+</div>
+<h3 class="sub-heading">[PASTEL BLUE /FLORAL MOOD] 활용 예</h3>
+<div class="img-single"><img src="./images/recipe_19_ohhee_full-body_shot_of_a_blonde_woman_wearing_a_blue_and_wh.jpg" loading="lazy" alt=""></div>
+<p><strong>[PROMPT] </strong></p>
+<div class="prompt-box" id="r22">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r22">Copy</button>
+  </div>
+  <pre class="prompt-body">full-body shot of a blonde woman wearing a blue and white floral dress,
+holding wild flower in her hands, posing with a young man dressed as an english
+gentleman, wearing a pastel cream blazer and light grey trousers,
+in an outdoor garden setting on a sunny day with a blue sky
+--ar 3:4 --profile awvn9n2 qj5ci6x --sref https://s.mj.run/fMI8yCL4rkY</pre>
+</div>
+<h3 class="sub-heading">무드보드 코드 : --profile qj5ci6x awvn9n2 --sref https://s.mj.run/fMI8yCL4rkY</h3>
+<ul class="info-list">
+<li>OHHEE가 직접 셋팅한 무드보드 --p 코드 2개 + sref 이미지를 사용하는 무드입니다.<br>미세한 그레인, 은은한 자연광으로 빈티지한 분위기를 극대화 하도록 셋팅했습니다.</li>
+<li>야외, 가든 뷰에 어울리는 무드입니다.</li>
+<li>인종/베이스 : Caucasian, 인형처럼 예쁜 외모는 아니나 빈티지 무드에 어울리는 정감 가는 외모를 의도하고 셋팅 하였습니다.</li>
+</ul>
+<div class="prompt-box" id="r23">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r23">Copy</button>
+  </div>
+  <pre class="prompt-body">--profile qj5ci6x awvn9n2 --sref https://s.mj.run/fMI8yCL4rkY</pre>
+</div>
+<div class="img-single"><img src="./images/recipe_20_ohhee_backyard_fragile_feeling_--ar_43_--sref_httpss.mj.runf.jpg" loading="lazy" alt=""></div>
+<p><strong>[PROMPT] </strong></p>
+<div class="prompt-box" id="r24">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r24">Copy</button>
+  </div>
+  <pre class="prompt-body">backyard, fragile feeling --ar 4:3
+--profile qj5ci6x awvn9n2 --sref https://s.mj.run/fMI8yCL4rkY</pre>
+</div>
+<p>짧은 프롬프트지만 미드저니의 창의성에 기대어, 매우 재미있는 결과물이 나오는 프롬프트 입니다.</p>
+<div class="img-single"><img src="./images/recipe_21_ohhee_vintage_cottagecore_laundry_scene_delicate_lace_linens.jpg" loading="lazy" alt=""></div>
+<p><strong>[PROMPT] </strong></p>
+<div class="prompt-box" id="r25">
+  <div class="prompt-header">
+    <span class="prompt-label">prompt</span>
+    <button class="copy-btn" data-target="r25">Copy</button>
+  </div>
+  <pre class="prompt-body">vintage cottagecore laundry scene, delicate lace linens and floral embroidered cloths
+hanging on a clothesline, soft pastel blue-fabric, intricate white crochet lace pieces,
+sunlight shining through thin fabric creating gentle shadows, linens swaying slightly
+in the breeze, wooden clothespins, lush green garden background with small cream
+flowers, warm natural afternoon light, soft nostalgic atmosphere, high-detail textures
+--ar 4:3 --profile qj5ci6x awvn9n2 --sref https://s.mj.run/fMI8yCL4rkY</pre>
+</div>
+</div>
+</main>
+
+<script>
+document.querySelectorAll('.copy-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.dataset.target;
+    const pre = document.getElementById(id).querySelector('.prompt-body');
+    navigator.clipboard.writeText(pre.textContent.trim()).then(() => {
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy', 1500);
+    });
+  });
+});
+</script>
