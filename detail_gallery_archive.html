@@ -1,0 +1,363 @@
+<title>Interactive Portfolio Gallery</title>
+<link rel="stylesheet" href="./common.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap">
+<style>
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0f0f0f;--ink:#f0ede6;--accent:#b5502e;--muted:#6b6760;
+    --border:#222;--code-bg:#161616;--tag-bg:#1a1a1a
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0f0f0f;--ink:#f0ede6;--accent:#b5502e;--muted:#6b6760;
+  --border:#222;--code-bg:#161616;--tag-bg:#1a1a1a
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'Space Grotesk',var(--sans);line-height:1.6;min-height:100vh}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.site-header{border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;gap:1rem}
+.site-header a{color:var(--muted);font-size:.85rem;letter-spacing:.04em}
+.site-header a:hover{color:var(--accent);text-decoration:none}
+.site-header .sep{color:var(--border)}
+
+.hero{padding:3.5rem 2rem 2.5rem;max-width:1000px;margin:0 auto}
+.eyebrow{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;font-weight:600;margin-bottom:1rem;letter-spacing:-.02em}
+.hero h1 span{color:var(--muted);font-weight:400}
+.meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.tag{background:var(--tag-bg,#edeae2);color:var(--muted);font-size:.7rem;padding:.2rem .6rem;border-radius:2px;letter-spacing:.04em;text-transform:uppercase}
+.summary-box{border:1px solid var(--border);padding:1.25rem 1.5rem;margin-bottom:0;font-size:.875rem;color:var(--muted);line-height:1.75}
+.summary-box strong{color:var(--ink)}
+
+.content{max-width:1000px;margin:0 auto;padding:2rem 2rem 5rem}
+
+/* Grid of gallery cards */
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:4rem}
+@media(max-width:680px){.gallery-grid{grid-template-columns:1fr}}
+
+.gallery-card{border:1px solid var(--border);border-radius:4px;overflow:hidden;transition:border-color .2s}
+.gallery-card:hover{border-color:var(--accent)}
+
+.card-img{aspect-ratio:16/10;background:var(--code-bg,#edeae2);overflow:hidden;position:relative}
+.card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.card-img .no-img{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.7rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+.card-body{padding:1.25rem}
+.card-num{font-family:var(--mono);font-size:.65rem;color:var(--muted);letter-spacing:.08em;margin-bottom:.4rem}
+.card-title{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:600;margin-bottom:.6rem;letter-spacing:-.01em}
+.card-desc{font-size:.825rem;color:var(--muted);line-height:1.7;margin-bottom:.9rem}
+
+.card-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.card-tag{font-size:.65rem;border:1px solid var(--border);color:var(--muted);padding:.15rem .5rem;border-radius:2px;letter-spacing:.03em}
+
+.card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:.75rem;border-top:1px solid var(--border)}
+.ref-link{font-size:.72rem;color:var(--muted);letter-spacing:.02em}
+.ref-link:hover{color:var(--accent)}
+
+/* Detail sections */
+.section-header{display:flex;align-items:baseline;gap:1rem;margin-bottom:2.5rem;padding-top:3rem;border-top:1px solid var(--border)}
+.section-header h2{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:600;letter-spacing:-.02em}
+.section-num{font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+
+.detail-block{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem;align-items:start}
+@media(max-width:700px){.detail-block{grid-template-columns:1fr}}
+
+.detail-screenshot{border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.detail-screenshot img{width:100%;display:block}
+.detail-screenshot .placeholder{aspect-ratio:16/10;background:var(--code-bg,#edeae2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.7rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+
+.detail-info{}
+.info-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;margin-top:1rem}
+.info-label:first-child{margin-top:0}
+.info-body{font-size:.85rem;color:var(--muted);line-height:1.75}
+.use-list{padding-left:1.2rem}
+.use-list li{font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:.2rem}
+.prompt-hint{background:var(--code-bg,#edeae2);border:1px solid var(--border);padding:1rem;border-radius:3px;font-size:.78rem;color:var(--ink);line-height:1.75;font-family:var(--mono)}
+</style>
+
+<header class="site-header">
+  <a href="index.html">← 전체 레시피</a>
+  <span class="sep">|</span>
+  <span style="font-size:.85rem;color:var(--muted)">OHHEE AI 레시피</span>
+</header>
+
+<div class="hero">
+  <p class="eyebrow">Reference Archive</p>
+  <h1>Interactive Portfolio<br><span>Gallery</span></h1>
+  <div class="meta">
+    <span class="tag">React Bits</span>
+    <span class="tag">3D Gallery</span>
+    <span class="tag">Portfolio</span>
+    <span class="tag">Interaction</span>
+  </div>
+  <div class="summary-box">
+    AI 크리에이터를 위한 <strong>인터랙티브 갤러리 레퍼런스 10종</strong> 모음입니다.<br>
+    각 효과의 특징과 활용 방법, Claude / Codex 구현 프롬프트를 함께 정리했습니다.
+  </div>
+</div>
+
+<main class="content">
+
+  <!-- ① Dome Gallery -->
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2>Dome Gallery</h2>
+  </div>
+  <div class="detail-block">
+    <div class="detail-screenshot">
+      <img src="./images/gallery/01_Dome_Gallery.png" alt="Dome Gallery" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>screenshot</div>'">
+    </div>
+    <div class="detail-info">
+      <p class="info-label">Description</p>
+      <p class="info-body">수많은 이미지가 하나의 거대한 반구형 공간을 이루도록 배치되는 3D 이미지 갤러리. 사용자가 마우스나 드래그를 이용해 여러 방향으로 이미지 공간을 탐색할 수 있습니다.</p>
+      <p class="info-label">AI Creator 활용</p>
+      <ul class="use-list">
+        <li>전체 작품 Archive</li>
+        <li>AI 이미지 포트폴리오</li>
+        <li>패션·뷰티 에디토리얼</li>
+        <li>세계관 기반 포트폴리오</li>
+      </ul>
+      <p class="info-label">구현 프롬프트</p>
+      <div class="prompt-hint">Dome Gallery 레퍼런스처럼 포트폴리오 이미지를 하나의 거대한 반구형 3D 공간에 배치해주세요. 마우스·드래그로 갤러리 공간을 탐색할 수 있어야 합니다.</div>
+      <p class="info-label">Reference</p>
+      <a class="ref-link" href="https://www.reactbits.dev/components/dome-gallery" target="_blank">reactbits.dev/components/dome-gallery ↗</a>
+    </div>
+  </div>
+
+  <!-- ② Drift Wall -->
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2>Drift Wall</h2>
+  </div>
+  <div class="detail-block">
+    <div class="detail-screenshot">
+      <img src="./images/gallery/02_Drift_Wall.png" alt="Drift Wall" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>screenshot</div>'">
+    </div>
+    <div class="detail-info">
+      <p class="info-label">Description</p>
+      <p class="info-body">수많은 이미지 타일이 거대한 하나의 이미지 벽을 이루고 공간 안에서 지속적으로 흘러가는 형태의 인터랙티브 갤러리. 강한 원근감과 공간감이 특징입니다.</p>
+      <p class="info-label">AI Creator 활용</p>
+      <ul class="use-list">
+        <li>Portfolio Home</li>
+        <li>이미지가 많은 AI 크리에이터</li>
+        <li>사진·패션·그래픽 Archive</li>
+        <li>포트폴리오 첫 화면</li>
+      </ul>
+      <p class="info-label">구현 프롬프트</p>
+      <div class="prompt-hint">Drift Wall 레퍼런스처럼 여러 작업 이미지로 이루어진 거대한 이미지 벽을 만들어주세요. 이미지들이 원근감을 따라 자연스럽게 흘러가야 합니다.</div>
+      <p class="info-label">Reference</p>
+      <a class="ref-link" href="https://www.reactbits.dev/components/drift-wall" target="_blank">reactbits.dev/components/drift-wall ↗</a>
+    </div>
+  </div>
+
+  <!-- ③ Infinite Spiral -->
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2>Infinite Spiral</h2>
+  </div>
+  <div class="detail-block">
+    <div class="detail-screenshot">
+      <img src="./images/gallery/03_Infinite_Spiral.png" alt="Infinite Spiral" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>screenshot</div>'">
+    </div>
+    <div class="detail-info">
+      <p class="info-label">Description</p>
+      <p class="info-body">이미지들이 3D 공간 안에서 나선형 구조를 형성하며 화면 깊숙한 곳까지 끝없이 이어지는 갤러리. Z축 방향의 터널·DNA 형태처럼 강한 공간감을 만듭니다.</p>
+      <p class="info-label">AI Creator 활용</p>
+      <ul class="use-list">
+        <li>Experimental Works / AI Lab</li>
+        <li>초현실 이미지</li>
+        <li>Y2K / Cyber 프로젝트</li>
+        <li>Digital Art Archive</li>
+      </ul>
+      <p class="info-label">구현 프롬프트</p>
+      <div class="prompt-hint">Infinite Spiral 레퍼런스처럼 포트폴리오 이미지들이 3D 공간에서 나선형 궤도를 형성하도록 만들어주세요. 스크롤·드래그로 무한한 이미지 터널을 탐색하도록 구현해주세요.</div>
+      <p class="info-label">Reference</p>
+      <a class="ref-link" href="https://www.reactbits.dev/components/infinite-spiral" target="_blank">reactbits.dev/components/infinite-spiral ↗</a>
+    </div>
+  </div>
+
+  <!-- ④ Circular Gallery -->
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2>Circular Gallery</h2>
+  </div>
+  <div class="detail-block">
+    <div class="detail-screenshot">
+      <img src="./images/gallery/04_Circular_Gallery.png" alt="Circular Gallery" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>screenshot</div>'">
+    </div>
+    <div class="detail-info">
+      <p class="info-label">Description</p>
+      <p class="info-body">여러 장의 이미지가 하나의 커다란 원형 궤도를 이루며 좌우로 움직이는 갤러리. 일반 Carousel보다 공간감이 크고 실제 포트폴리오에 적용하기 쉽습니다.</p>
+      <p class="info-label">AI Creator 활용</p>
+      <ul class="use-list">
+        <li>Selected Works</li>
+        <li>패션 Lookbook</li>
+        <li>AI 이미지 Series</li>
+        <li>카테고리별 Portfolio</li>
+      </ul>
+      <p class="info-label">구현 프롬프트</p>
+      <div class="prompt-hint">Circular Gallery 레퍼런스처럼 작업 이미지들을 하나의 커다란 원형 3D 궤도를 따라 배치해주세요. 중앙 작품이 가장 강조되고 양옆은 원근감에 따라 휘어져 보이게 해주세요.</div>
+      <p class="info-label">Reference</p>
+      <a class="ref-link" href="https://www.reactbits.dev/components/circular-gallery" target="_blank">reactbits.dev/components/circular-gallery ↗</a>
+    </div>
+  </div>
+
+  <!-- ⑤ Flying Posters -->
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2>Flying Posters</h2>
+  </div>
+  <div class="detail-block">
+    <div class="detail-screenshot">
+      <img src="./images/gallery/05_Flying_Posters.png" alt="Flying Posters" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>screenshot</div>'">
+    </div>
+    <div class="detail-info">
+      <p class="info-label">Description</p>
+      <p class="info-body">이미지를 3D 공간에 떠 있는 포스터처럼 배치하는 갤러리. 여러 이미지가 서로 다른 위치와 깊이에 존재하여 공간 안에서 포스터 사이를 이동하는 듯한 경험을 만듭니다.</p>
+      <p class="info-label">AI Creator 활용</p>
+      <ul class="use-list">
+        <li>Fashion Editorial / Poster Design</li>
+        <li>AI 화보 / Album Art</li>
+        <li>Brand Campaign</li>
+        <li>Portfolio Hero</li>
+      </ul>
+      <p class="info-label">구현 프롬프트</p>
+      <div class="prompt-hint">Flying Posters 레퍼런스처럼 여러 작업 이미지를 3D 공간 안에 떠 있는 포스터처럼 배치해주세요. 서로 다른 Z축 깊이를 가지며 시네마틱 공간감을 만들어주세요.</div>
+      <p class="info-label">Reference</p>
+      <a class="ref-link" href="https://www.reactbits.dev/components/flying-posters" target="_blank">reactbits.dev/components/flying-posters ↗</a>
+    </div>
+  </div>
+
+  <!-- ⑥ Depth Carousel -->
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <h2>Depth Carousel</h2>
+  </div>
+  <div class="detail-block">
+    <div class="detail-screenshot">
+      <img src="./images/gallery/06_Depth_Carousel.png" alt="Depth Carousel" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>screenshot</div>'">
+    </div>
+    <div class="detail-info">
+      <p class="info-label">Description</p>
+      <p class="info-body">일반적인 좌우 Carousel에 Z축 깊이를 추가한 3D 이미지 갤러리. 현재 선택된 작품은 화면 앞으로 나오고 다른 작품들은 뒤쪽으로 겹쳐 보입니다.</p>
+      <p class="info-label">AI Creator 활용</p>
+      <ul class="use-list">
+        <li>Client Project / Case Study</li>
+        <li>AI 이미지 Series</li>
+        <li>Product Campaign</li>
+        <li>프로젝트별 결과물</li>
+      </ul>
+      <p class="info-label">구현 프롬프트</p>
+      <div class="prompt-hint">Depth Carousel 레퍼런스처럼 Carousel에 Z축 깊이를 적용해주세요. 현재 선택 작품은 가장 앞에 크게, 이전·다음 작품은 뒤쪽에 겹쳐 보이게 해주세요.</div>
+      <p class="info-label">Reference</p>
+      <a class="ref-link" href="https://www.reactbits.dev/components/depth-carousel" target="_blank">reactbits.dev/components/depth-carousel ↗</a>
+    </div>
+  </div>
+
+  <!-- ⑦ Accordion Gallery -->
+  <div class="section-header">
+    <span class="section-num">07</span>
+    <h2>Accordion Gallery</h2>
+  </div>
+  <div class="detail-block">
+    <div class="detail-screenshot">
+      <img src="./images/gallery/07_Accordion_Gallery.png" alt="Accordion Gallery" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>screenshot</div>'">
+    </div>
+    <div class="detail-info">
+      <p class="info-label">Description</p>
+      <p class="info-body">여러 이미지가 좁은 세로 패널로 나란히 배치되어 있고, 특정 패널에 마우스를 올리면 해당 이미지가 크게 펼쳐지는 갤러리. 많은 카테고리를 한 화면에 보여주기 좋습니다.</p>
+      <p class="info-label">AI Creator 활용</p>
+      <ul class="use-list">
+        <li>Portfolio Category</li>
+        <li>AI IMAGE / AI VIDEO</li>
+        <li>Fashion / Beauty / Product</li>
+        <li>Home Menu</li>
+      </ul>
+      <p class="info-label">구현 프롬프트</p>
+      <div class="prompt-hint">Accordion Gallery 레퍼런스처럼 화면을 세로 이미지 패널로 나눠주세요. 기본은 좁게 배치되고, hover시 해당 패널이 부드럽게 확대되며 나머지는 자연스럽게 축소되도록 구현해주세요.</div>
+      <p class="info-label">Reference</p>
+      <a class="ref-link" href="https://www.reactbits.dev/components/accordion-gallery" target="_blank">reactbits.dev/components/accordion-gallery ↗</a>
+    </div>
+  </div>
+
+  <!-- ⑧ Scroll Stack -->
+  <div class="section-header">
+    <span class="section-num">08</span>
+    <h2>Scroll Stack</h2>
+  </div>
+  <div class="detail-block">
+    <div class="detail-screenshot">
+      <img src="./images/gallery/08_Scroll_Stack.png" alt="Scroll Stack" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>screenshot</div>'">
+    </div>
+    <div class="detail-info">
+      <p class="info-label">Description</p>
+      <p class="info-body">페이지를 아래로 스크롤할수록 새로운 이미지나 프로젝트 카드가 이전 카드 위에 차곡차곡 쌓이는 형태. 강한 레이어와 시각적 리듬을 만들 수 있습니다.</p>
+      <p class="info-label">AI Creator 활용</p>
+      <ul class="use-list">
+        <li>Brand Case Study</li>
+        <li>Before / Process / Final</li>
+        <li>Campaign</li>
+        <li>작업 과정 Portfolio</li>
+      </ul>
+      <p class="info-label">구현 프롬프트</p>
+      <div class="prompt-hint">Scroll Stack 레퍼런스처럼 스크롤시 작업 카드가 화면 중앙에 고정된 상태에서 다음 카드가 그 위로 쌓이도록 만들어주세요. Scale·위치·깊이를 이용해 레이어감을 만들어주세요.</div>
+      <p class="info-label">Reference</p>
+      <a class="ref-link" href="https://www.reactbits.dev/components/scroll-stack" target="_blank">reactbits.dev/components/scroll-stack ↗</a>
+    </div>
+  </div>
+
+  <!-- ⑨ Chroma Grid -->
+  <div class="section-header">
+    <span class="section-num">09</span>
+    <h2>Chroma Grid</h2>
+  </div>
+  <div class="detail-block">
+    <div class="detail-screenshot">
+      <img src="./images/gallery/09_Chroma_Grid.png" alt="Chroma Grid" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>screenshot</div>'">
+    </div>
+    <div class="detail-info">
+      <p class="info-label">Description</p>
+      <p class="info-body">여러 작업물을 Grid 형태로 보여주면서 마우스 위치·Hover에 따라 컬러와 조명 효과가 변화하는 인터랙티브 갤러리. Grid 구조를 유지하며 시각적 인터랙션을 추가합니다.</p>
+      <p class="info-label">AI Creator 활용</p>
+      <ul class="use-list">
+        <li>Selected Works / 전체 Portfolio</li>
+        <li>AI Image Archive</li>
+        <li>Project Index</li>
+        <li>작품 탐색 페이지</li>
+      </ul>
+      <p class="info-label">구현 프롬프트</p>
+      <div class="prompt-hint">Chroma Grid 레퍼런스처럼 작업물을 정돈된 Grid 형태로 보여주세요. 카드에 접근하면 해당 영역에 Chroma 조명 효과가 나타나도록 구현해주세요.</div>
+      <p class="info-label">Reference</p>
+      <a class="ref-link" href="https://www.reactbits.dev/components/chroma-grid" target="_blank">reactbits.dev/components/chroma-grid ↗</a>
+    </div>
+  </div>
+
+  <!-- ⑩ Masonry -->
+  <div class="section-header">
+    <span class="section-num">10</span>
+    <h2>Masonry</h2>
+  </div>
+  <div class="detail-block">
+    <div class="detail-screenshot">
+      <img src="./images/gallery/10_Masonry.png" alt="Masonry" onerror="this.parentElement.innerHTML='<div class=\'placeholder\'>screenshot</div>'">
+    </div>
+    <div class="detail-info">
+      <p class="info-label">Description</p>
+      <p class="info-body">세로·가로 비율이 서로 다른 이미지를 Pinterest처럼 빈 공간 없이 자연스럽게 배열하는 갤러리. 다양한 비율의 작업물을 함께 사용하는 AI 크리에이터 포트폴리오에 특히 유용합니다.</p>
+      <p class="info-label">AI Creator 활용</p>
+      <ul class="use-list">
+        <li>전체 작품 Archive</li>
+        <li>다양한 Aspect Ratio</li>
+        <li>Pinterest Style Gallery</li>
+        <li>Category Filter</li>
+      </ul>
+      <p class="info-label">구현 프롬프트</p>
+      <div class="prompt-hint">Masonry 레퍼런스처럼 서로 다른 비율의 포트폴리오 이미지들을 원본 비율을 유지한 채 빈 공간 없이 자연스럽게 배치해주세요. 카테고리 변경시 이미지들이 새로운 레이아웃으로 자연스럽게 이동해주세요.</div>
+      <p class="info-label">Reference</p>
+      <a class="ref-link" href="https://www.reactbits.dev/components/masonry" target="_blank">reactbits.dev/components/masonry ↗</a>
+    </div>
+  </div>
+
+</main>
