@@ -1,0 +1,137 @@
+<title>제품 연출컷 프롬프트 — 바디제품</title>
+<link rel="stylesheet" href="./common.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500&display=swap">
+<style>
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#1a1917;--ink:#f0ede6;--accent:#d4714a;--muted:#9b9690;
+    --border:#333028;--code-bg:#252320;--tag-bg:#222019
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#1a1917;--ink:#f0ede6;--accent:#d4714a;--muted:#9b9690;
+  --border:#333028;--code-bg:#252320;--tag-bg:#222019
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;min-height:100vh}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.site-header{border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;gap:1rem}
+.site-header a{color:var(--muted);font-size:.85rem;letter-spacing:.04em}
+.site-header a:hover{color:var(--accent);text-decoration:none}
+.site-header .sep{color:var(--border)}
+
+.hero{padding:3rem 2rem 2rem;max-width:900px;margin:0 auto}
+.eyebrow{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
+.hero h1{font-family:'Noto Serif KR',var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.25;font-weight:400;margin-bottom:1rem;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.tag{background:var(--tag-bg,#edeae2);color:var(--muted);font-size:.72rem;padding:.25rem .65rem;border-radius:2px;letter-spacing:.03em}
+.summary-box{background:var(--ink);color:var(--paper);padding:1.5rem 2rem;border-radius:4px;margin-bottom:3rem}
+.summary-box p{font-size:.9rem;line-height:1.75;opacity:.9}
+
+.content{max-width:900px;margin:0 auto;padding:0 2rem 5rem}
+.section{margin-bottom:3rem}
+.section-title{font-family:'Noto Serif KR',var(--serif);font-size:1.2rem;font-weight:400;margin-bottom:1rem;color:var(--ink);letter-spacing:.02em}
+.section p{font-size:.9rem;color:var(--muted);line-height:1.75;margin-bottom:.75rem}
+.info-list{padding-left:1.4rem;margin-bottom:1rem}
+.info-list li{font-size:.88rem;color:var(--muted);line-height:1.75;margin-bottom:.4rem}
+
+.how-box{border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem;margin-bottom:2rem;font-size:.875rem;color:var(--muted);line-height:1.8}
+.how-box strong{color:var(--ink)}
+.how-box ol{padding-left:1.3rem;margin-top:.5rem}
+.how-box ol li{margin-bottom:.4rem}
+
+.prompt-box{background:var(--code-bg,#edeae2);border:1px solid var(--border);border-radius:4px;margin:1.25rem 0;overflow:hidden}
+.prompt-header{display:flex;justify-content:space-between;align-items:center;padding:.5rem 1rem;border-bottom:1px solid var(--border)}
+.prompt-label{font-family:var(--mono);font-size:.7rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.copy-btn{font-family:var(--mono);font-size:.7rem;color:var(--accent);background:none;border:1px solid var(--accent);padding:.2rem .6rem;border-radius:2px;cursor:pointer;transition:all .15s}
+.copy-btn:hover{background:var(--accent);color:#fff}
+.prompt-body{padding:1rem;font-family:var(--mono);font-size:.78rem;line-height:1.75;color:var(--ink);white-space:pre-wrap;word-break:break-word}
+.divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
+</style>
+
+<header class="site-header">
+  <a href="index.html">← 전체 레시피</a>
+  <span class="sep">|</span>
+  <span style="font-size:.85rem;color:var(--muted)">OHHEE AI 레시피</span>
+</header>
+
+<div class="hero">
+  <p class="eyebrow">Product Photography Prompt</p>
+  <h1>제품 연출컷 프롬프트<br>바디제품 편</h1>
+  <div class="meta">
+    <span class="tag">ChatGPT</span>
+    <span class="tag">Nanobanana</span>
+    <span class="tag">제품연출</span>
+    <span class="tag">바디제품</span>
+  </div>
+  <div class="summary-box">
+    <p>업로드한 제품 이미지를 그대로 유지하면서 럭셔리 뷰티 캠페인 스타일의 연출컷을 생성하는 프롬프트입니다.<br>
+    ChatGPT 또는 Nanobanana에 <strong>제품 사진 1장과 함께</strong> 아래 프롬프트를 붙여넣어 사용하세요.</p>
+  </div>
+</div>
+
+<main class="content">
+<div class="section">
+  <h2 class="section-title">사용 방법</h2>
+  <div class="how-box">
+    <ol>
+      <li><strong>제품 사진 1장</strong>을 준비합니다 (라벨·로고가 잘 보이는 정면 컷 권장)</li>
+      <li>ChatGPT 또는 Nanobanana에 이미지를 첨부합니다</li>
+      <li>아래 프롬프트를 복사해서 붙여넣기 후 전송합니다</li>
+      <li>필요에 따라 <strong>배경 분위기, 색온도, 소품</strong> 등을 추가로 지정할 수 있습니다</li>
+    </ol>
+  </div>
+
+  <h2 class="section-title">럭셔리 뷰티 캠페인 — 바디제품 연출컷</h2>
+  <p>미니멀 하이엔드 에디토리얼 분위기로 제품을 재연출합니다.<br>
+  제품 라벨·형태는 절대 변형 없이 그대로 유지하며, 배경과 조명만 새롭게 구성합니다.</p>
+
+  <div class="prompt-box" id="p01">
+    <div class="prompt-header">
+      <span class="prompt-label">Prompt — ChatGPT / Nanobanana</span>
+      <button class="copy-btn" data-target="p01">Copy</button>
+    </div>
+    <pre class="prompt-body">Create a premium luxury commercial product photograph using the uploaded product image as the sole product reference. Preserve the product exactly as shown in the reference image with no redesign, no label modifications, no logo changes, no text alterations, and no shape distortions. Rebuild the scene around the uploaded product while matching this specific aesthetic: a minimalist high-end editorial beauty campaign shot.
+
+Position the product perfectly upright and centered on a smooth reflective surface, occupying approximately 20–25% of the frame height with generous negative space surrounding it. The camera is placed at product height with a straight-on perspective, creating a clean and balanced composition.
+
+The background consists of a soft out-of-focus architectural environment with large translucent panels and subtle geometric forms, rendered as creamy gradients rather than identifiable objects. Introduce a warm golden glow entering from the left side of the frame and a cooler bluish daylight tone from the right side, creating a sophisticated warm-versus-cool color contrast.
+
+The product remains sharply in focus while the background falls into a smooth medium-format depth of field. Create realistic reflections beneath the product with soft falloff, natural contact shadows, and subtle environmental reflections on the product surface.
+
+Lighting should feel like a luxury fragrance, skincare, or premium cosmetic campaign, with large diffused scrims, soft edge highlights, controlled specular reflections, and clean shadow transitions.
+
+Preserve realistic proportions according to the uploaded product dimensions and automatically scale the composition around the product. The image must look naturally photographed rather than digitally composited, with physically accurate materials, realistic light behavior, premium retouching, and authentic surface reflections.
+
+Shot on a Phase One XF IQ4 150MP medium-format camera with a Schneider Kreuznach 120mm macro lens, focus stacked for maximum clarity, ultra-high dynamic range, luxury advertising photography quality, razor-sharp product detail, subtle cinematic depth, refined color grading, elegant minimalism, sophisticated editorial aesthetic, premium commercial campaign look, museum-quality sharpness, photorealistic rendering, 8K resolution, no extra props, no text overlays, no watermarks, no artificial effects, no excessive contrast, no AI artifacts, no floating objects, no distorted reflections, no warped packaging, only the uploaded product placed within this exact luxury lighting and environment.</pre>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <h2 class="section-title">활용 팁</h2>
+  <ul class="info-list">
+    <li>제품 배경색이나 전체 분위기를 바꾸고 싶다면 프롬프트 마지막에 <strong>원하는 색감이나 무드 키워드</strong>를 추가하세요</li>
+    <li>여러 제품을 함께 배치하려면 <em>"Include [제품명] alongside the primary product"</em> 문구를 추가하세요</li>
+    <li>배경 계절감을 주고 싶다면 <em>"with soft winter light"</em>, <em>"summer sun flare from upper left"</em> 등을 삽입하세요</li>
+    <li>Nanobanana 사용 시 Reference Image 슬롯에 제품 이미지를 넣고 프롬프트를 입력하세요</li>
+  </ul>
+</div>
+</main>
+
+<script>
+document.querySelectorAll('.copy-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.dataset.target;
+    const pre = document.getElementById(id).querySelector('.prompt-body');
+    navigator.clipboard.writeText(pre.textContent.trim()).then(() => {
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy', 1500);
+    });
+  });
+});
+</script>
