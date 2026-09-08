@@ -23,7 +23,7 @@ a:hover{text-decoration:underline}
 .site-header a:hover{color:var(--accent);text-decoration:none}
 .site-header .sep{color:var(--border)}
 
-.hero{padding:3rem 2rem 2rem;max-width:900px;margin:0 auto}
+.hero{padding:3rem 2rem 2rem;max-width:1100px;margin:0 auto}
 .eyebrow{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
 .hero h1{font-family:'Noto Serif KR',var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.25;font-weight:400;margin-bottom:1rem;text-wrap:balance}
 .meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
@@ -31,10 +31,22 @@ a:hover{text-decoration:underline}
 .summary-box{background:var(--ink);color:var(--paper);padding:1.5rem 2rem;border-radius:4px;margin-bottom:3rem}
 .summary-box p{font-size:.9rem;line-height:1.75;opacity:.9}
 
-.content{max-width:900px;margin:0 auto;padding:0 2rem 5rem}
-.section{margin-bottom:3rem}
-.section-title{font-family:'Noto Serif KR',var(--serif);font-size:1.2rem;font-weight:400;margin-bottom:1rem;color:var(--ink);letter-spacing:.02em}
-.section p{font-size:.9rem;color:var(--muted);line-height:1.75;margin-bottom:.75rem}
+.content{max-width:1100px;margin:0 auto;padding:0 2rem 5rem}
+
+.section{margin-bottom:2.5rem}
+.section-header{display:flex;align-items:baseline;gap:1rem;margin-bottom:1.5rem;padding-top:2.5rem;border-top:1px solid var(--border)}
+.section-header h2{font-family:'Noto Serif KR',var(--serif);font-size:1.3rem;font-weight:400;letter-spacing:.02em}
+.section-num{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.08em}
+
+.side-block{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+@media(max-width:720px){.side-block{grid-template-columns:1fr}}
+
+.side-img{border:1px solid var(--border);border-radius:4px;overflow:hidden;position:sticky;top:1.5rem}
+.side-img img{width:100%;display:block}
+
+.side-content{}
+.side-desc{font-size:.88rem;color:var(--muted);line-height:1.75;margin-bottom:1.25rem}
+
 .info-list{padding-left:1.4rem;margin-bottom:1rem}
 .info-list li{font-size:.88rem;color:var(--muted);line-height:1.75;margin-bottom:.4rem}
 
@@ -43,13 +55,15 @@ a:hover{text-decoration:underline}
 .how-box ol{padding-left:1.3rem;margin-top:.5rem}
 .how-box ol li{margin-bottom:.4rem}
 
-.prompt-box{background:var(--code-bg,#edeae2);border:1px solid var(--border);border-radius:4px;margin:1.25rem 0;overflow:hidden}
+.prompt-box{background:var(--code-bg,#edeae2);border:1px solid var(--border);border-radius:4px;overflow:hidden}
 .prompt-header{display:flex;justify-content:space-between;align-items:center;padding:.5rem 1rem;border-bottom:1px solid var(--border)}
 .prompt-label{font-family:var(--mono);font-size:.7rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
 .copy-btn{font-family:var(--mono);font-size:.7rem;color:var(--accent);background:none;border:1px solid var(--accent);padding:.2rem .6rem;border-radius:2px;cursor:pointer;transition:all .15s}
 .copy-btn:hover{background:var(--accent);color:#fff}
-.prompt-body{padding:1rem;font-family:var(--mono);font-size:.78rem;line-height:1.75;color:var(--ink);white-space:pre-wrap;word-break:break-word}
-.divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
+.prompt-body{padding:1rem;font-family:var(--mono);font-size:.75rem;line-height:1.75;color:var(--ink);white-space:pre-wrap;word-break:break-word}
+
+.tips-section{padding-top:2.5rem;border-top:1px solid var(--border)}
+.tips-title{font-family:'Noto Serif KR',var(--serif);font-size:1.1rem;font-weight:400;margin-bottom:1rem;color:var(--ink)}
 </style>
 
 <header class="site-header">
@@ -74,8 +88,9 @@ a:hover{text-decoration:underline}
 </div>
 
 <main class="content">
+
 <div class="section">
-  <h2 class="section-title">사용 방법</h2>
+  <h2 class="tips-title">사용 방법</h2>
   <div class="how-box">
     <ol>
       <li><strong>제품 사진 1장</strong>을 준비합니다 (라벨·로고가 잘 보이는 정면 컷 권장)</li>
@@ -84,19 +99,26 @@ a:hover{text-decoration:underline}
       <li>필요에 따라 <strong>배경 분위기, 색온도, 소품</strong> 등을 추가로 지정할 수 있습니다</li>
     </ol>
   </div>
+</div>
 
-  <h2 class="section-title">럭셔리 뷰티 캠페인 — 바디제품 연출컷</h2>
-  <p>미니멀 하이엔드 에디토리얼 분위기로 제품을 재연출합니다.<br>
-  제품 라벨·형태는 절대 변형 없이 그대로 유지하며, 배경과 조명만 새롭게 구성합니다.</p>
-  <div class="img-single"><img src="./images/product_body_example.jpg" loading="lazy" alt="프롬프트 출력 예시 — Byredo Blanche Body Mist"></div>
-  <p style="font-size:.78rem;color:var(--muted);margin-top:.5rem">▲ 프롬프트 출력 예시 — 제품 이미지 1장 업로드 후 생성한 결과물</p>
-
-  <div class="prompt-box" id="p01">
-    <div class="prompt-header">
-      <span class="prompt-label">Prompt — ChatGPT / Nanobanana</span>
-      <button class="copy-btn" data-target="p01">Copy</button>
-    </div>
-    <pre class="prompt-body">Create a premium luxury commercial product photograph using the uploaded product image as the sole product reference. Preserve the product exactly as shown in the reference image with no redesign, no label modifications, no logo changes, no text alterations, and no shape distortions. Rebuild the scene around the uploaded product while matching this specific aesthetic: a minimalist high-end editorial beauty campaign shot.
+<!-- ① 럭셔리 스튜디오 솔로 샷 -->
+<div class="section-header">
+  <span class="section-num">01</span>
+  <h2>럭셔리 뷰티 캠페인 — 스튜디오 솔로 샷</h2>
+</div>
+<div class="side-block">
+  <div class="side-img">
+    <img src="./images/product_body_example.jpg" loading="lazy" alt="럭셔리 스튜디오 솔로 샷 예시">
+  </div>
+  <div class="side-content">
+    <p class="side-desc">미니멀 하이엔드 에디토리얼 분위기로 제품을 재연출합니다.<br>
+    제품 라벨·형태는 절대 변형 없이 그대로 유지하며, 배경과 조명만 새롭게 구성합니다.</p>
+    <div class="prompt-box" id="p01">
+      <div class="prompt-header">
+        <span class="prompt-label">Prompt — ChatGPT / Nanobanana</span>
+        <button class="copy-btn" data-target="p01">Copy</button>
+      </div>
+      <pre class="prompt-body">Create a premium luxury commercial product photograph using the uploaded product image as the sole product reference. Preserve the product exactly as shown in the reference image with no redesign, no label modifications, no logo changes, no text alterations, and no shape distortions. Rebuild the scene around the uploaded product while matching this specific aesthetic: a minimalist high-end editorial beauty campaign shot.
 
 Position the product perfectly upright and centered on a smooth reflective surface, occupying approximately 20–25% of the frame height with generous negative space surrounding it. The camera is placed at product height with a straight-on perspective, creating a clean and balanced composition.
 
@@ -109,24 +131,28 @@ Lighting should feel like a luxury fragrance, skincare, or premium cosmetic camp
 Preserve realistic proportions according to the uploaded product dimensions and automatically scale the composition around the product. The image must look naturally photographed rather than digitally composited, with physically accurate materials, realistic light behavior, premium retouching, and authentic surface reflections.
 
 Shot on a Phase One XF IQ4 150MP medium-format camera with a Schneider Kreuznach 120mm macro lens, focus stacked for maximum clarity, ultra-high dynamic range, luxury advertising photography quality, razor-sharp product detail, subtle cinematic depth, refined color grading, elegant minimalism, sophisticated editorial aesthetic, premium commercial campaign look, museum-quality sharpness, photorealistic rendering, 8K resolution, no extra props, no text overlays, no watermarks, no artificial effects, no excessive contrast, no AI artifacts, no floating objects, no distorted reflections, no warped packaging, only the uploaded product placed within this exact luxury lighting and environment.</pre>
+    </div>
   </div>
 </div>
 
-<hr class="divider">
-
-<div class="section">
-  <h2 class="section-title">파우치 플랫레이 연출컷</h2>
-  <p>제품을 아이보리 가죽 드로스트링 파우치에 담아 플랫레이 스타일로 연출하는 프롬프트입니다.<br>
-  여러 제품을 함께 넣어 레이어드 구성도 가능합니다.</p>
-  <div class="img-single"><img src="./images/product_body_example2.jpg" loading="lazy" alt="파우치 플랫레이 프롬프트 출력 예시"></div>
-  <p style="font-size:.78rem;color:var(--muted);margin-top:.5rem">▲ 프롬프트 출력 예시 — 파우치 플랫레이 스타일</p>
-
-  <div class="prompt-box" id="p02">
-    <div class="prompt-header">
-      <span class="prompt-label">Prompt — 파우치 플랫레이 / ChatGPT · Nanobanana</span>
-      <button class="copy-btn" data-target="p02">Copy</button>
-    </div>
-    <pre class="prompt-body">Create a premium minimalist luxury product photograph using the uploaded product image as the sole product reference. Preserve the product exactly as shown in the uploaded reference with no redesign, no label modifications, no logo changes, no color alterations, no text changes, and no distortion of shape or proportions.
+<!-- ② 파우치 플랫레이 -->
+<div class="section-header">
+  <span class="section-num">02</span>
+  <h2>파우치 플랫레이 연출컷</h2>
+</div>
+<div class="side-block">
+  <div class="side-img">
+    <img src="./images/product_body_example2.jpg" loading="lazy" alt="파우치 플랫레이 예시">
+  </div>
+  <div class="side-content">
+    <p class="side-desc">제품을 아이보리 가죽 드로스트링 파우치에 담아 플랫레이 스타일로 연출하는 프롬프트입니다.<br>
+    여러 제품을 함께 넣어 레이어드 구성도 가능합니다.</p>
+    <div class="prompt-box" id="p02">
+      <div class="prompt-header">
+        <span class="prompt-label">Prompt — 파우치 플랫레이 / ChatGPT · Nanobanana</span>
+        <button class="copy-btn" data-target="p02">Copy</button>
+      </div>
+      <pre class="prompt-body">Create a premium minimalist luxury product photograph using the uploaded product image as the sole product reference. Preserve the product exactly as shown in the uploaded reference with no redesign, no label modifications, no logo changes, no color alterations, no text changes, and no distortion of shape or proportions.
 
 Recreate this exact composition: a soft ivory-white leather drawstring pouch placed vertically in the center of the frame against a seamless warm off-white studio background. The pouch should appear naturally filled and slightly gathered around the opening with realistic leather folds, subtle creases, soft shadows, and premium craftsmanship details.
 
@@ -149,24 +175,28 @@ The final image should feel like a high-end beauty, fashion accessory, fragrance
 Shot on a Phase One XF IQ4 150MP medium-format camera with a Schneider Kreuznach 120mm macro lens, focus stacked, ultra-high resolution, museum-quality sharpness, premium commercial retouching, realistic material rendering, physically accurate shadows, authentic leather texture, clean luxury aesthetic, sophisticated editorial styling, subtle depth, natural highlights, photorealistic product integration, 8K advertising quality, no AI artifacts, no warped packaging, no floating objects, no distorted reflections, no excessive contrast, and absolutely no cut-and-paste appearance.
 
 The final image should look like an original luxury brand campaign photograph professionally art directed and captured in a premium commercial studio.</pre>
+    </div>
   </div>
 </div>
 
-<hr class="divider">
-
-<div class="section">
-  <h2 class="section-title">모델 라이프스타일 연출컷</h2>
-  <p>모델이 제품을 손에 들고 있는 뷰티 캠페인 스타일의 라이프스타일 컷입니다.<br>
-  플래시 직광 조명으로 하이패션 에디토리얼 느낌을 연출합니다.</p>
-  <div class="img-single"><img src="./images/product_body_example3.jpg" loading="lazy" alt="모델 라이프스타일 프롬프트 출력 예시"></div>
-  <p style="font-size:.78rem;color:var(--muted);margin-top:.5rem">▲ 프롬프트 출력 예시 — 모델 라이프스타일 스타일</p>
-
-  <div class="prompt-box" id="p03">
-    <div class="prompt-header">
-      <span class="prompt-label">Prompt — 모델 라이프스타일 / ChatGPT · Nanobanana</span>
-      <button class="copy-btn" data-target="p03">Copy</button>
-    </div>
-    <pre class="prompt-body">Using the uploaded product image as the sole product reference, recreate a luxury beauty-campaign lifestyle photograph with the exact composition, framing, mood, pose, lighting style, and premium editorial aesthetic of the reference image.
+<!-- ③ 모델 라이프스타일 -->
+<div class="section-header">
+  <span class="section-num">03</span>
+  <h2>모델 라이프스타일 연출컷</h2>
+</div>
+<div class="side-block">
+  <div class="side-img">
+    <img src="./images/product_body_example3.jpg" loading="lazy" alt="모델 라이프스타일 예시">
+  </div>
+  <div class="side-content">
+    <p class="side-desc">모델이 제품을 손에 들고 있는 뷰티 캠페인 스타일의 라이프스타일 컷입니다.<br>
+    플래시 직광 조명으로 하이패션 에디토리얼 느낌을 연출합니다.</p>
+    <div class="prompt-box" id="p03">
+      <div class="prompt-header">
+        <span class="prompt-label">Prompt — 모델 라이프스타일 / ChatGPT · Nanobanana</span>
+        <button class="copy-btn" data-target="p03">Copy</button>
+      </div>
+      <pre class="prompt-body">Using the uploaded product image as the sole product reference, recreate a luxury beauty-campaign lifestyle photograph with the exact composition, framing, mood, pose, lighting style, and premium editorial aesthetic of the reference image.
 
 Feature a female model cropped closely so only part of the face is visible along the left edge of the frame, showing smooth healthy skin, glossy dark brunette hair cascading naturally over the shoulder, and a thin black camisole strap visible on the shoulder.
 
@@ -189,24 +219,28 @@ Camera framing should be vertical portrait orientation, tightly cropped, with th
 Materials must appear hyperrealistic: glossy product finish, natural skin sheen, soft hair texture, realistic ceramic tile surface, and true-to-life shadows.
 
 Shot on a Phase One XF IQ4 150MP medium-format camera with an 80mm portrait lens, luxury commercial beauty photography, magazine-quality retouching, ultra-high-resolution detail, premium skincare and cosmetics advertising aesthetic, clean composition, non-AI appearance, realistic proportions, no extra accessories, no distracting elements, no text overlays beyond the referenced product packaging, and flawless professional campaign quality.</pre>
+    </div>
   </div>
 </div>
 
-<hr class="divider">
-
-<div class="section">
-  <h2 class="section-title">시네마틱 핸드 클로즈업</h2>
-  <p>다크 그라데이션 배경에 방향성 있는 시네마틱 조명으로 제품을 들고 있는 손을 연출하는 컷입니다.<br>
-  고급 스킨케어·향수 캠페인 분위기에 적합합니다.</p>
-  <div class="img-single"><img src="./images/product_body_example4.jpg" loading="lazy" alt="시네마틱 핸드 클로즈업 프롬프트 출력 예시"></div>
-  <p style="font-size:.78rem;color:var(--muted);margin-top:.5rem">▲ 프롬프트 출력 예시 — 시네마틱 핸드 클로즈업</p>
-
-  <div class="prompt-box" id="p04">
-    <div class="prompt-header">
-      <span class="prompt-label">Prompt — 시네마틱 핸드 / ChatGPT · Nanobanana</span>
-      <button class="copy-btn" data-target="p04">Copy</button>
-    </div>
-    <pre class="prompt-body">Using the uploaded product image as the sole product reference, recreate an ultra-premium luxury beauty campaign close-up with the exact composition, hand pose, framing, lighting direction, mood, and editorial styling of the reference image.
+<!-- ④ 시네마틱 핸드 클로즈업 -->
+<div class="section-header">
+  <span class="section-num">04</span>
+  <h2>시네마틱 핸드 클로즈업</h2>
+</div>
+<div class="side-block">
+  <div class="side-img">
+    <img src="./images/product_body_example4.jpg" loading="lazy" alt="시네마틱 핸드 클로즈업 예시">
+  </div>
+  <div class="side-content">
+    <p class="side-desc">다크 그라데이션 배경에 방향성 있는 시네마틱 조명으로 제품을 들고 있는 손을 연출하는 컷입니다.<br>
+    고급 스킨케어·향수 캠페인 분위기에 적합합니다.</p>
+    <div class="prompt-box" id="p04">
+      <div class="prompt-header">
+        <span class="prompt-label">Prompt — 시네마틱 핸드 / ChatGPT · Nanobanana</span>
+        <button class="copy-btn" data-target="p04">Copy</button>
+      </div>
+      <pre class="prompt-body">Using the uploaded product image as the sole product reference, recreate an ultra-premium luxury beauty campaign close-up with the exact composition, hand pose, framing, lighting direction, mood, and editorial styling of the reference image.
 
 Feature a single elegant female hand entering from the lower-left corner of the frame and naturally holding the referenced product upright at a slight diagonal angle of approximately 15–20 degrees, with the label facing directly toward the camera and fully visible.
 
@@ -229,13 +263,13 @@ Use shallow-to-moderate depth of field while keeping the entire product perfectl
 The mood should feel sophisticated, expensive, modern, and luxury-beauty focused, similar to a high-end skincare, fragrance, or cosmetics advertising campaign.
 
 Shot on a Phase One XF IQ4 150MP medium-format camera with a Schneider Kreuznach 80mm lens, ultra-high-resolution commercial beauty photography, dramatic studio lighting, museum-grade sharpness, premium magazine-quality retouching, realistic reflections, natural shadows, hyperrealistic detail, luxury campaign aesthetic, non-AI appearance, physically accurate proportions, no extra props, no jewelry, no distracting elements, no text overlays beyond the referenced product packaging, and flawless commercial advertising quality.</pre>
+    </div>
   </div>
 </div>
 
-<hr class="divider">
-
-<div class="section">
-  <h2 class="section-title">활용 팁</h2>
+<!-- 활용 팁 -->
+<div class="tips-section" style="margin-top:3rem">
+  <h2 class="tips-title">활용 팁</h2>
   <ul class="info-list">
     <li>제품 배경색이나 전체 분위기를 바꾸고 싶다면 프롬프트 마지막에 <strong>원하는 색감이나 무드 키워드</strong>를 추가하세요</li>
     <li>여러 제품을 함께 배치하려면 <em>"Include [제품명] alongside the primary product"</em> 문구를 추가하세요</li>
@@ -243,6 +277,7 @@ Shot on a Phase One XF IQ4 150MP medium-format camera with a Schneider Kreuznach
     <li>Nanobanana 사용 시 Reference Image 슬롯에 제품 이미지를 넣고 프롬프트를 입력하세요</li>
   </ul>
 </div>
+
 </main>
 
 <script>
