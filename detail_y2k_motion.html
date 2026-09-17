@@ -150,7 +150,11 @@ tr:nth-child(even) td{background:var(--code-bg,#f9f7f4)}
 <!-- 1. 완성 결과 -->
 <div class="sec-hd"><span class="sec-num">01</span><h2>완성 결과 &amp; 콘셉트</h2></div>
 
-<div class="sub-hd">콘셉트</div>
+<div class="video-wrap">
+  <video src="./images/y2k_ohhee_final.mp4" controls playsinline style="width:100%;border-radius:4px;border:1px solid var(--border);display:block"></video>
+</div>
+
+<div class="sub-hd" style="margin-top:1.75rem">콘셉트</div>
 <ul class="bullet-list">
   <li>닉네임: <strong>OHHEE</strong></li>
   <li>메인 키워드: <strong>DIGITAL DREAM</strong></li>
@@ -199,15 +203,19 @@ tr:nth-child(even) td{background:var(--code-bg,#f9f7f4)}
 </ul>
 
 <div class="sub-hd">추천 파일명</div>
-<div class="file-list">
-  <span>01</span>_main.png<br>
-  <span>02</span>_member_a.png<br>
-  <span>03</span>_member_b.png<br>
-  <span>04</span>_feature.png<br>
-  <span>05</span>_group.png<br>
-  <span>06</span>_popup_center.mp4<br>
-  <span>07</span>_exit_background.mp4<br>
-  <span>08</span>_bgm.mp3
+<div class="prompt-box" id="p-filenames">
+  <div class="prompt-header">
+    <span class="prompt-label">추천 파일명 구조</span>
+    <button class="copy-btn" data-target="p-filenames">Copy</button>
+  </div>
+  <pre class="prompt-body">01_main.png
+02_member_a.png
+03_member_b.png
+04_feature.png
+05_group.png
+06_popup_center.mp4
+07_exit_background.mp4
+08_bgm.mp3</pre>
 </div>
 <p class="body">파일명에 번호와 용도를 적어두면 "어느 장면에 어떤 이미지를 넣을지" 전달하기 쉬워집니다.</p>
 
