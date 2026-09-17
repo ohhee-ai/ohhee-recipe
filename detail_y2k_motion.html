@@ -1,0 +1,587 @@
+<title>Y2K 모션그래픽 프롬프트</title>
+<link rel="stylesheet" href="./common.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap">
+<style>
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#130e16;--ink:#f0ede8;--accent:#c45ba0;--muted:#8a7e8f;
+    --border:#2a1f30;--code-bg:#1c1322;--tag-bg:#1e1524
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#130e16;--ink:#f0ede8;--accent:#c45ba0;--muted:#8a7e8f;
+  --border:#2a1f30;--code-bg:#1c1322;--tag-bg:#1e1524
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'Space Grotesk',var(--sans);line-height:1.6;min-height:100vh}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.site-header{border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;gap:1rem}
+.site-header a{color:var(--muted);font-size:.85rem;letter-spacing:.04em}
+.site-header a:hover{color:var(--accent);text-decoration:none}
+.site-header .sep{color:var(--border)}
+
+.hero{padding:3.5rem 2rem 2.5rem;max-width:960px;margin:0 auto}
+.eyebrow{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:600;line-height:1.1;margin-bottom:1rem;letter-spacing:-.02em}
+.hero h1 span{color:var(--muted);font-weight:400}
+.meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.tag{background:var(--tag-bg,#edeae2);color:var(--muted);font-size:.7rem;padding:.2rem .6rem;border-radius:2px;letter-spacing:.04em;text-transform:uppercase}
+.summary-box{border-left:3px solid var(--accent);padding:.9rem 1.25rem;background:var(--code-bg,#f5f2ee);font-size:.875rem;color:var(--muted);line-height:1.8;border-radius:0 4px 4px 0}
+.summary-box strong{color:var(--ink)}
+
+.content{max-width:960px;margin:0 auto;padding:0 2rem 6rem}
+
+/* Section headers */
+.sec-hd{display:flex;align-items:baseline;gap:.85rem;padding-top:2.75rem;margin-bottom:1.5rem;border-top:1px solid var(--border)}
+.sec-hd h2{font-size:1.15rem;font-weight:600;letter-spacing:-.01em}
+.sec-num{font-family:var(--mono);font-size:.68rem;color:var(--muted);letter-spacing:.1em}
+
+.sub-hd{font-size:.95rem;font-weight:600;margin:1.75rem 0 .75rem;letter-spacing:-.01em}
+
+/* Body text */
+p.body{font-size:.875rem;color:var(--muted);line-height:1.8;margin-bottom:.75rem}
+
+/* Code / prompt blocks */
+.prompt-box{background:var(--code-bg,#edeae2);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin:1rem 0 1.5rem}
+.prompt-header{display:flex;justify-content:space-between;align-items:center;padding:.45rem 1rem;border-bottom:1px solid var(--border)}
+.prompt-label{font-family:var(--mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.copy-btn{font-family:var(--mono);font-size:.68rem;color:var(--accent);background:none;border:1px solid var(--accent);padding:.18rem .55rem;border-radius:2px;cursor:pointer;transition:all .15s}
+.copy-btn:hover{background:var(--accent);color:#fff}
+.prompt-body{padding:.9rem 1rem;font-family:var(--mono);font-size:.775rem;line-height:1.75;color:var(--ink);white-space:pre-wrap;word-break:break-word}
+
+/* Palette swatch block */
+.palette-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.6rem;margin:1rem 0 1.5rem}
+.swatch{border-radius:4px;overflow:hidden;border:1px solid var(--border)}
+.swatch-color{height:36px}
+.swatch-label{font-family:var(--mono);font-size:.7rem;padding:.3rem .6rem;color:var(--muted);background:var(--code-bg,#f5f2ee);border-top:1px solid var(--border)}
+.swatch-label strong{color:var(--ink);display:block}
+
+/* File list */
+.file-list{font-family:var(--mono);font-size:.8rem;line-height:1.9;color:var(--muted);background:var(--code-bg,#edeae2);border:1px solid var(--border);border-radius:4px;padding:.8rem 1rem;margin:.75rem 0 1.25rem}
+.file-list span{color:var(--accent)}
+
+/* Checklist */
+.checklist{list-style:none;margin:.5rem 0 1.25rem;padding-left:.25rem}
+.checklist li{font-size:.875rem;color:var(--muted);line-height:1.75;padding:.2rem 0;display:flex;gap:.6rem;align-items:flex-start}
+.checklist li::before{content:"□";font-family:var(--mono);color:var(--accent);flex-shrink:0;margin-top:.05em}
+.checklist.check li::before{content:"☑";color:var(--muted)}
+
+/* Bullet list */
+.bullet-list{padding-left:1.4rem;margin:.5rem 0 1.25rem}
+.bullet-list li{font-size:.875rem;color:var(--muted);line-height:1.75;margin-bottom:.2rem}
+.bullet-list li strong{color:var(--ink)}
+
+/* Ordered list */
+.num-list{padding-left:1.4rem;margin:.5rem 0 1.25rem;counter-reset:item}
+.num-list li{font-size:.875rem;color:var(--muted);line-height:1.75;margin-bottom:.35rem}
+.num-list li strong{color:var(--ink)}
+
+/* Step cards */
+.step-block{border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem;margin-bottom:1rem}
+.step-block .step-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
+.step-block .step-title{font-weight:600;font-size:.95rem;margin-bottom:.6rem;letter-spacing:-.01em}
+.step-block p.body{margin-bottom:.4rem}
+
+/* Tables */
+.tbl-wrap{overflow-x:auto;margin:1rem 0 1.5rem}
+table{width:100%;border-collapse:collapse;font-size:.835rem}
+th{font-weight:600;text-align:left;padding:.55rem .85rem;background:var(--code-bg,#edeae2);border:1px solid var(--border);font-size:.75rem;letter-spacing:.03em;text-transform:uppercase;color:var(--muted)}
+td{padding:.55rem .85rem;border:1px solid var(--border);color:var(--muted);line-height:1.6}
+td strong{color:var(--ink)}
+tr:nth-child(even) td{background:var(--code-bg,#f9f7f4)}
+
+/* Timeline table */
+.tbl-timeline td:first-child{font-family:var(--mono);font-size:.78rem;white-space:nowrap;color:var(--accent)}
+.tbl-timeline td:nth-child(2){font-weight:600;color:var(--ink)}
+
+/* Callout */
+.callout{border:1px solid var(--border);border-left:3px solid var(--accent);background:var(--code-bg,#f5f2ee);padding:.9rem 1.25rem;border-radius:0 4px 4px 0;font-size:.875rem;color:var(--muted);line-height:1.8;margin:1rem 0 1.5rem}
+.callout strong{color:var(--ink)}
+
+/* Audio structure */
+.audio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin:1rem 0}
+@media(max-width:600px){.audio-grid{grid-template-columns:1fr}}
+.audio-card{border:1px solid var(--border);border-radius:4px;padding:.75rem 1rem}
+.audio-card .track-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:.3rem}
+.audio-card .track-desc{font-size:.8rem;color:var(--muted)}
+
+/* Conversation flow */
+.flow-list{counter-reset:step;padding:0;list-style:none;margin:.5rem 0 1.5rem}
+.flow-list li{display:flex;gap:.85rem;align-items:flex-start;margin-bottom:.6rem;font-size:.875rem;color:var(--muted);line-height:1.7}
+.flow-list li::before{counter-increment:step;content:counter(step);font-family:var(--mono);font-size:.7rem;min-width:1.4rem;height:1.4rem;display:flex;align-items:center;justify-content:center;border:1px solid var(--accent);border-radius:2px;color:var(--accent);flex-shrink:0;margin-top:.15em}
+.flow-list li strong{color:var(--ink)}
+
+/* Divider */
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* Checklist groups */
+.checklist-group{margin:1rem 0 1.5rem}
+.checklist-group-label{font-size:.72rem;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+</style>
+
+<header class="site-header">
+  <a href="index.html">← 전체 레시피</a>
+  <span class="sep">|</span>
+  <span style="font-size:.85rem;color:var(--muted)">OHHEE AI 레시피</span>
+</header>
+
+<div class="hero">
+  <p class="eyebrow">Motion Graphics Prompt</p>
+  <h1>Y2K 모션그래픽 만들기<br><span>코딩 없이 ChatGPT로</span></h1>
+  <div class="meta">
+    <span class="tag">ChatGPT</span>
+    <span class="tag">Y2K</span>
+    <span class="tag">모션그래픽</span>
+    <span class="tag">영상제작</span>
+    <span class="tag">Midjourney</span>
+    <span class="tag">Grok</span>
+  </div>
+  <div class="summary-box">
+    첨부한 이미지와 영상만으로 2000년대 웹페이지·윈도우 감성의 모션그래픽을 제작한 실제 워크플로우입니다.<br>
+    OHHEE 프로젝트를 예시로 설명하지만, <strong>인물·제품·캐릭터·브랜드 등 다른 소재에도 그대로 적용</strong>할 수 있습니다.
+  </div>
+</div>
+
+<main class="content">
+
+<!-- 1. 완성 결과 -->
+<div class="sec-hd"><span class="sec-num">01</span><h2>완성 결과 &amp; 콘셉트</h2></div>
+
+<div class="sub-hd">콘셉트</div>
+<ul class="bullet-list">
+  <li>닉네임: <strong>OHHEE</strong></li>
+  <li>메인 키워드: <strong>DIGITAL DREAM</strong></li>
+  <li>무드: Pink tone, Y2K, 2000년대 웹페이지, Windows UI, 팝업, 픽셀 그래픽</li>
+  <li>핵심 연출: 브라우저 접속 → 이미지 갤러리 → 연결 완료 → 무한 팝업 → 종료 창이 커서를 피해 도망감</li>
+</ul>
+
+<div class="sub-hd">최종 출력 사양</div>
+<div class="tbl-wrap">
+  <table>
+    <tr><th>항목</th><th>4:5 버전</th><th>16:9 버전</th></tr>
+    <tr><td>해상도</td><td>1080 × 1350</td><td>1920 × 1080</td></tr>
+    <tr><td>프레임레이트</td><td>60fps</td><td>60fps</td></tr>
+    <tr><td>길이</td><td>23초</td><td>23초</td></tr>
+    <tr><td>영상 코덱</td><td>H.264</td><td>H.264</td></tr>
+    <tr><td>오디오</td><td>AAC Stereo</td><td>AAC Stereo</td></tr>
+    <tr><td>용도</td><td>인스타그램 피드·릴스 커버</td><td>유튜브·가로형 콘텐츠</td></tr>
+  </table>
+</div>
+<div class="callout"><strong>중요:</strong> 16:9 버전은 4:5 영상을 단순히 자른 것이 아니라, 창과 텍스트의 위치를 가로 화면에 맞게 다시 설계했습니다.</div>
+
+<hr class="divider">
+
+<!-- 2. 준비물 -->
+<div class="sec-hd"><span class="sec-num">02</span><h2>준비물</h2></div>
+
+<div class="sub-hd">필수 준비물</div>
+<ul class="checklist">
+  <li>사용할 <strong>닉네임 또는 브랜드명</strong> 1개</li>
+  <li>영상 전체를 관통하는 <strong>메인 키워드</strong> 1개</li>
+  <li>화면에 넣을 이미지</li>
+  <li>원하는 출력 비율과 영상 길이</li>
+  <li>이미지와 영상을 사용할 권한 또는 당사자의 동의</li>
+</ul>
+
+<div class="sub-hd">있으면 결과가 더 좋아지는 자료</div>
+<ul class="checklist">
+  <li>메인 인물·제품 이미지 1장</li>
+  <li>추가 인물·제품 이미지 2~4장</li>
+  <li>단체 이미지 또는 대표 이미지 1장</li>
+  <li>팝업 장면 중앙에 넣을 짧은 영상 1개</li>
+  <li>엔딩 장면 배경에 넣을 짧은 영상 1개</li>
+  <li>원하는 BGM 파일</li>
+  <li>무드 참고 이미지 3~5장 (핀터레스트에서 'early 2000s web design' 키워드로 검색)</li>
+  <li>반드시 보여야 하는 문구나 CTA</li>
+</ul>
+
+<div class="sub-hd">추천 파일명</div>
+<div class="file-list">
+  <span>01</span>_main.png<br>
+  <span>02</span>_member_a.png<br>
+  <span>03</span>_member_b.png<br>
+  <span>04</span>_feature.png<br>
+  <span>05</span>_group.png<br>
+  <span>06</span>_popup_center.mp4<br>
+  <span>07</span>_exit_background.mp4<br>
+  <span>08</span>_bgm.mp3
+</div>
+<p class="body">파일명에 번호와 용도를 적어두면 "어느 장면에 어떤 이미지를 넣을지" 전달하기 쉬워집니다.</p>
+
+<hr class="divider">
+
+<!-- 3. 간단한 시작 프롬프트 -->
+<div class="sec-hd"><span class="sec-num">03</span><h2>가장 간단한 시작 프롬프트</h2></div>
+<p class="body">레퍼런스 이미지 없이, <strong>닉네임과 메인 키워드만</strong> 바꿔 사용할 수 있는 최소 프롬프트입니다.</p>
+
+<div class="prompt-box" id="p-simple">
+  <div class="prompt-header">
+    <span class="prompt-label">Prompt — 간단 버전 / ChatGPT</span>
+    <button class="copy-btn" data-target="p-simple">Copy</button>
+  </div>
+  <pre class="prompt-body">닉네임: [닉네임]
+메인 키워드: [키워드]
+
+첨부한 이미지와 영상을 활용해 2000년대 웹페이지와 Windows 팝업을 연상시키는 Y2K 모션그래픽을 만들어줘.
+
+[닉네임]과 [키워드]를 메인 타이틀로 사용하고, 첨부한 피사체의 외형은 바꾸거나 새로 생성하지 말아줘. 브라우저 접속, 이미지 창 전환, 픽셀 아이콘, 로딩 바, 마우스 커서, 여러 팝업이 연속으로 열리는 장면을 포함해줘.
+
+핑크 중심의 통일된 UI 디자인으로 제작하고, 모든 창의 모서리·상단바·최소화·최대화·닫기 버튼과 로고 형태를 일관되게 유지해줘.
+
+전체 길이는 10초, 60fps로 제작해줘. 4:5(1080×1350)와 16:9(1920×1080)는 각각 화면에 맞게 재배치하고 단순 크롭하지 말아줘. H.264 MP4로 출력해줘.</pre>
+</div>
+
+<hr class="divider">
+
+<!-- 4. 상세 프롬프트 -->
+<div class="sec-hd"><span class="sec-num">04</span><h2>결과를 더 정확하게 만드는 상세 프롬프트</h2></div>
+<p class="body">에셋 역할, 연출 순서, 디자인 규칙까지 명시한 전체 스펙 프롬프트입니다.</p>
+
+<div class="prompt-box" id="p-detail">
+  <div class="prompt-header">
+    <span class="prompt-label">Prompt — 상세 버전 / ChatGPT</span>
+    <button class="copy-btn" data-target="p-detail">Copy</button>
+  </div>
+  <pre class="prompt-body">첨부 에셋을 직접 사용해 [닉네임]의 Y2K 웹페이지형 모션그래픽을 제작해줘.
+
+핵심 정보
+- 닉네임/브랜드명: [닉네임]
+- 메인 키워드: [키워드]
+- 컬러: [메인 컬러]
+- 무드: 2000년대 인터넷, Windows UI, 픽셀, 팝업, 글로시 크롬
+- 길이: [길이]초
+- 출력: 4:5 1080×1350 / 16:9 1920×1080 / 60fps / H.264 MP4
+
+에셋 사용
+- 01_main.png: 대표 장면
+- 02_member_a.png, 03_member_b.png: 갤러리 창
+- 04_feature.png: 연결 완료 장면
+- 05_group.png 또는 group_video.mp4: 시작과 메인 웹페이지 장면
+- popup_center.mp4: 무한 팝업 장면의 중앙 영상
+- exit_background.mp4: 종료 확인 창 뒤의 영상
+- bgm.mp3: 지정한 하이라이트 구간 사용
+
+연출 순서
+1. 컴퓨터가 부팅되고 사이트에 접속하는 인트로
+2. 브라우저 안에 대표 이미지와 [닉네임] 로고 등장
+3. 여러 이미지 창이 차례로 열리는 갤러리
+4. CONNECTION COMPLETE 메시지와 알림창
+5. 메인 웹페이지 안에서 대표 영상 재생
+6. 중앙 영상을 둘러싸며 팝업이 빠르게 증식
+7. "Do you want to disconnect?" 창 등장
+8. 커서가 YES에 접근할 때 창이 네 번 피해서 이동
+9. 마지막에는 연결된 상태로 종료
+
+디자인 규칙
+- 첨부 이미지의 인물·제품·캐릭터를 재생성하거나 변형하지 말 것
+- 얼굴과 로고가 UI에 가리지 않게 배치할 것
+- 모든 창의 모서리 반경, 테두리 두께, 타이틀바, 버튼 모양을 동일하게 유지할 것
+- [닉네임] 로고의 형태와 색을 모든 장면에서 동일하게 유지할 것
+- 중요한 텍스트는 배경과 분리되도록 창, 반투명 패널 또는 단색 영역 위에 배치할 것
+- 4:5와 16:9를 각각 별도 레이아웃으로 제작할 것
+- BGM과 효과음은 별도 트랙으로 관리하고 최종 단계에서 믹스할 것
+
+먼저 장면 구성과 타임라인을 제안한 뒤 제작하고, 완성 후 해상도·길이·프레임레이트·오디오 포함 여부를 검증해줘.</pre>
+</div>
+
+<hr class="divider">
+
+<!-- 5. 실제 제작 워크플로우 -->
+<div class="sec-hd"><span class="sec-num">05</span><h2>실제 제작 워크플로우</h2></div>
+
+<div class="step-block">
+  <div class="step-label">STEP 1</div>
+  <div class="step-title">콘셉트를 두 단어로 고정하기</div>
+  <p class="body">처음부터 세부 디자인을 모두 결정할 필요는 없습니다. 닉네임과 메인 키워드만 먼저 정하세요.<br>
+  이 두 단어를 로고, 주소창, 파일명, 팝업 메시지, 상태 표시줄에 반복하면 짧은 영상도 하나의 브랜드처럼 보입니다.</p>
+  <div class="prompt-box" id="p-step1" style="margin-top:.6rem;margin-bottom:0">
+    <div class="prompt-header"><span class="prompt-label">예시</span><button class="copy-btn" data-target="p-step1">Copy</button></div>
+    <pre class="prompt-body">닉네임: OHHEE
+메인 키워드: DIGITAL DREAM</pre>
+  </div>
+</div>
+
+<div class="step-block">
+  <div class="step-label">STEP 2</div>
+  <div class="step-title">에셋의 역할을 지정하기</div>
+  <p class="body">이미지를 한꺼번에 첨부하는 것보다 역할을 함께 적는 것이 중요합니다.</p>
+  <div class="prompt-box" id="p-step2a" style="margin-top:.6rem">
+    <div class="prompt-header"><span class="prompt-label">역할 지정 예시</span><button class="copy-btn" data-target="p-step2a">Copy</button></div>
+    <pre class="prompt-body">1번은 메인 이미지
+2번과 3번은 갤러리 이미지
+4번은 연결 완료 장면
+5번은 시작과 마지막에 사용할 대표 이미지</pre>
+  </div>
+  <div class="prompt-box" id="p-step2b">
+    <div class="prompt-header"><span class="prompt-label">인물 교체 예시</span><button class="copy-btn" data-target="p-step2b">Copy</button></div>
+    <pre class="prompt-body">처음과 7.5~10초의 대표 이미지에는 단체 이미지를 사용하고,
+3.3~5.8초의 세 번째 이미지 창에는 새로 첨부한 인물을 넣어줘.
+나머지 장면과 타이밍은 유지해줘.</pre>
+  </div>
+</div>
+
+<div class="step-block">
+  <div class="step-label">STEP 3</div>
+  <div class="step-title">장면과 타임라인 설계하기</div>
+  <p class="body">OHHEE 완성본의 타임라인 구성입니다.</p>
+  <div class="tbl-wrap" style="margin-top:.75rem">
+    <table class="tbl-timeline">
+      <tr><th>시간</th><th>장면</th><th>핵심 연출</th></tr>
+      <tr><td>0.0–0.8초</td><td>접속 시작</td><td>로딩 바, 커서 클릭, UI 부팅</td></tr>
+      <tr><td>0.8–3.3초</td><td>메인 브라우저</td><td>로고, 대표 이미지, 플립폰, 웹 메뉴</td></tr>
+      <tr><td>3.3–5.8초</td><td>이미지 갤러리</td><td>세 개의 인물 창이 순차 등장</td></tr>
+      <tr><td>5.8–7.5초</td><td>연결 완료</td><td>CONNECTION COMPLETE, 알림 팝업</td></tr>
+      <tr><td>7.5–10.0초</td><td>OHHEE WORLD</td><td>웹페이지 안에서 단체 영상 재생</td></tr>
+      <tr><td>10.0–16.0초</td><td>무한 팝업</td><td>중앙 영상 주위로 창이 빠르게 증식</td></tr>
+      <tr><td>16.0–23.0초</td><td>종료 확인</td><td>종료 창이 YES 커서를 네 번 회피</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="step-block">
+  <div class="step-label">STEP 4</div>
+  <div class="step-title">UI 디자인 규칙을 먼저 고정하기</div>
+  <p class="body">여러 장면을 따로 만들면 창 디자인이 조금씩 달라지기 쉽습니다. 제작 전에 미리 고정하세요.</p>
+  <ul class="bullet-list">
+    <li>창 모서리의 둥근 정도</li>
+    <li>테두리 두께와 색</li>
+    <li>타이틀바 높이와 그라데이션</li>
+    <li>최소화·최대화·닫기 버튼의 순서와 모양</li>
+    <li>본문 글꼴과 픽셀 글꼴</li>
+    <li>버튼의 입체 효과 / 로고의 비율, 광택, 외곽선</li>
+    <li>커서 크기와 그림자</li>
+  </ul>
+  <div class="sub-hd" style="margin-top:.25rem">추천 팔레트</div>
+  <div class="palette-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#F8DCEF"></div><div class="swatch-label"><strong>#F8DCEF</strong>Background Pink</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#ED43A4"></div><div class="swatch-label"><strong>#ED43A4</strong>Hot Pink</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F29ACA"></div><div class="swatch-label"><strong>#F29ACA</strong>Chrome Pink</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#E3D6F0"></div><div class="swatch-label"><strong>#E3D6F0</strong>Lavender</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#512344"></div><div class="swatch-label"><strong>#512344</strong>Dark Ink</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFF7FC"></div><div class="swatch-label"><strong>#FFF7FC</strong>Window White</div></div>
+  </div>
+</div>
+
+<div class="step-block">
+  <div class="step-label">STEP 5</div>
+  <div class="step-title">먼저 무음 영상으로 움직임 확인하기</div>
+  <p class="body">음악을 먼저 넣으면 장면 문제를 발견하기 어렵습니다. 무음 프리뷰에서 먼저 확인하세요.</p>
+  <ul class="bullet-list">
+    <li>인물과 제품이 잘리지 않는가?</li>
+    <li>각 이미지가 약속한 순서로 나오는가?</li>
+    <li>팝업이 너무 빨라 내용을 읽을 수 없는가?</li>
+    <li>4:5와 16:9에서 중요한 내용이 안전 영역 안에 있는가?</li>
+    <li>창과 로고 디자인이 모든 장면에서 같은가?</li>
+  </ul>
+</div>
+
+<div class="step-block">
+  <div class="step-label">STEP 6</div>
+  <div class="step-title">배경음악과 효과음을 분리해서 작업하기</div>
+  <p class="body">별도 트랙으로 관리하면 음악을 교체해도 클릭음과 팝업음을 유지할 수 있습니다.</p>
+  <div class="audio-grid">
+    <div class="audio-card"><div class="track-label">BGM 트랙</div><div class="track-desc">노래 또는 인스트루멘털</div></div>
+    <div class="audio-card"><div class="track-label">SFX 트랙</div><div class="track-desc">클릭, 알림, 창 열림, 스위시, 완료음</div></div>
+    <div class="audio-card"><div class="track-label">FINAL MIX</div><div class="track-desc">BGM + SFX 합산 출력</div></div>
+  </div>
+  <div class="prompt-box" id="p-bgm">
+    <div class="prompt-header"><span class="prompt-label">음악 교체 프롬프트</span><button class="copy-btn" data-target="p-bgm">Copy</button></div>
+    <pre class="prompt-body">배경음악만 첨부한 [파일명]으로 교체해줘.
+[00:43.3–00:53.3] 구간을 사용하고, 노래의 "click" 하이라이트가 첫 번째 마우스 클릭과 맞도록 싱크해줘.
+기존 클릭음과 팝업 효과음은 유지하되 보컬을 가리지 않도록 볼륨을 낮춰줘.</pre>
+  </div>
+</div>
+
+<div class="step-block">
+  <div class="step-label">STEP 7</div>
+  <div class="step-title">세로와 가로 버전을 별도로 배치하기</div>
+  <ul class="bullet-list">
+    <li><strong>4:5:</strong> 창을 위아래로 쌓고 인물을 크게 보여주기</li>
+    <li><strong>16:9:</strong> 로고·영상·상태 창을 좌우로 분산하기</li>
+    <li>팝업 이동 범위와 커서 경로도 각 화면 크기에 맞게 다시 설정하기</li>
+    <li>텍스트 크기는 실제 픽셀 기준으로 다시 조정하기</li>
+  </ul>
+</div>
+
+<div class="step-block">
+  <div class="step-label">STEP 8</div>
+  <div class="step-title">최종 검수 후 출력하기</div>
+  <p class="body">최종 파일에서는 영상뿐 아니라 오디오 스트림도 확인합니다.</p>
+  <div class="prompt-box" id="p-spec" style="margin-top:.6rem;margin-bottom:0">
+    <div class="prompt-header"><span class="prompt-label">최종 출력 스펙</span><button class="copy-btn" data-target="p-spec">Copy</button></div>
+    <pre class="prompt-body">4:5  : 1080×1350 / 60fps / 23초
+16:9 : 1920×1080 / 60fps / 23초
+Video: H.264
+Audio: AAC Stereo</pre>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- 6. 장면별 수정 프롬프트 -->
+<div class="sec-hd"><span class="sec-num">06</span><h2>장면별 수정 프롬프트 모음</h2></div>
+
+<div class="sub-hd">인물 또는 제품만 교체</div>
+<div class="prompt-box" id="p-swap">
+  <div class="prompt-header"><span class="prompt-label">Prompt</span><button class="copy-btn" data-target="p-swap">Copy</button></div>
+  <pre class="prompt-body">전체 디자인, 애니메이션, 타이밍, 음악은 그대로 유지해줘.
+[시간 또는 장면명]에 나오는 [기존 이미지]만 새로 첨부한 [새 이미지]로 교체해줘.
+새 이미지의 비율을 억지로 늘리지 말고, 피사체가 잘리지 않도록 창 안에서 크롭과 위치를 조정해줘.</pre>
+</div>
+
+<div class="sub-hd">이미지 대신 영상 넣기</div>
+<div class="prompt-box" id="p-video">
+  <div class="prompt-header"><span class="prompt-label">Prompt</span><button class="copy-btn" data-target="p-video">Copy</button></div>
+  <pre class="prompt-body">[장면명/시간]의 정지 이미지를 새로 첨부한 영상으로 교체해줘.
+영상은 기존 이미지 창 안에서 재생되게 하고, 창의 크기·테두리·상단 버튼·로고는 그대로 유지해줘.
+원본 영상의 소리는 사용하지 말고 현재 BGM과 효과음을 유지해줘.</pre>
+</div>
+
+<div class="sub-hd">무한 팝업 장면 추가</div>
+<div class="prompt-box" id="p-popup">
+  <div class="prompt-header"><span class="prompt-label">Prompt</span><button class="copy-btn" data-target="p-popup">Copy</button></div>
+  <pre class="prompt-body">현재 디자인과 동일한 Windows/Y2K 창이 중앙 영상 주변에서 연속으로 열리는 6초 장면을 추가해줘.
+처음에는 1~2개만 보이다가 후반으로 갈수록 빠르게 증식하게 해줘.
+각 창은 위치, 크기, 회전 각도가 조금씩 다르되, 모서리와 버튼 디자인은 모두 같아야 해.
+중앙 영상과 얼굴을 완전히 가리지 않도록 좌우와 모서리를 중심으로 쌓아줘.</pre>
+</div>
+
+<div class="sub-hd">커서를 피하는 종료 창</div>
+<div class="prompt-box" id="p-cursor">
+  <div class="prompt-header"><span class="prompt-label">Prompt</span><button class="copy-btn" data-target="p-cursor">Copy</button></div>
+  <pre class="prompt-body">"Do you want to disconnect?"라는 큰 확인 창을 보여줘.
+커서가 YES 버튼 가까이 이동하면 창 전체가 커서를 피하듯 다른 위치로 이동하고,
+다시 접근하면 또 피하는 동작을 총 네 번 반복해줘.
+창은 화면 밖으로 나가지 않아야 하고, 마지막에는 클릭하지 않은 채 STILL CONNECTED 상태로 끝내줘.</pre>
+</div>
+
+<div class="sub-hd">디자인 일관성 수정</div>
+<div class="prompt-box" id="p-design">
+  <div class="prompt-header"><span class="prompt-label">Prompt</span><button class="copy-btn" data-target="p-design">Copy</button></div>
+  <pre class="prompt-body">추가된 장면을 기존 장면과 비교해 디자인을 검증해줘.
+창 모서리 반경, 테두리, 타이틀바, 최소화·최대화·닫기 버튼, [닉네임] 로고의 형태와 색이 기존과 다른 부분만 수정해줘.
+영상 내용과 타이밍은 변경하지 말아줘.</pre>
+</div>
+
+<div class="sub-hd">4:5에서 16:9 버전 만들기</div>
+<div class="prompt-box" id="p-ratio">
+  <div class="prompt-header"><span class="prompt-label">Prompt</span><button class="copy-btn" data-target="p-ratio">Copy</button></div>
+  <pre class="prompt-body">이 영상의 16:9 FHD 버전을 추가로 만들어줘.
+4:5 화면을 확대하거나 자르지 말고, 모든 창과 텍스트를 1920×1080 화면에 맞게 다시 배치해줘.
+장면 순서, 길이, 애니메이션 타이밍, BGM, 효과음은 동일하게 유지해줘.</pre>
+</div>
+
+<hr class="divider">
+
+<!-- 7. 대화 순서 -->
+<div class="sec-hd"><span class="sec-num">07</span><h2>ChatGPT와 작업할 때 추천하는 대화 순서</h2></div>
+<p class="body">한 번의 긴 프롬프트보다 단계별로 나눠 요청하면 수정이 훨씬 쉬워집니다.</p>
+<ol class="flow-list">
+  <li><strong>콘셉트 제시:</strong> 닉네임, 키워드, 색상, 무드, 길이</li>
+  <li><strong>핵심 에셋 첨부:</strong> 메인 이미지와 추가 이미지</li>
+  <li><strong>첫 버전 제작:</strong> 우선 한 비율로 디자인과 움직임 확인</li>
+  <li><strong>인물·제품 교체:</strong> 장면명과 시간을 지정해서 부분 수정</li>
+  <li><strong>새 장면 추가:</strong> 중앙 영상, 무한 팝업, 인터랙션 등</li>
+  <li><strong>디자인 통일:</strong> 버튼, 모서리, 로고를 기존 장면과 비교</li>
+  <li><strong>오디오 교체:</strong> 사용할 구간과 싱크 포인트 지정</li>
+  <li><strong>다른 비율 제작:</strong> 단순 크롭이 아닌 별도 레이아웃 요청</li>
+  <li><strong>최종 검증:</strong> 길이, 해상도, fps, 오디오, 이미지 순서 확인</li>
+</ol>
+<div class="callout">수정 요청에는 항상 <strong>바꿀 것</strong>과 <strong>유지할 것</strong>을 함께 적는 것이 핵심입니다.</div>
+
+<hr class="divider">
+
+<!-- 8. 최종 체크리스트 -->
+<div class="sec-hd"><span class="sec-num">08</span><h2>최종 검수 체크리스트</h2></div>
+
+<div class="checklist-group">
+  <div class="checklist-group-label">이미지와 영상</div>
+  <ul class="checklist">
+    <li>모든 이미지가 지정한 순서로 등장한다</li>
+    <li>첨부하지 않은 얼굴이나 제품이 새로 생성되지 않았다</li>
+    <li>얼굴, 로고, 핵심 제품이 잘리지 않았다</li>
+    <li>정지 이미지를 영상으로 교체한 구간이 정확하다</li>
+    <li>영상의 종횡비가 왜곡되지 않았다</li>
+  </ul>
+</div>
+
+<div class="checklist-group">
+  <div class="checklist-group-label">UI와 디자인</div>
+  <ul class="checklist">
+    <li>모든 창의 모서리 모양이 같다</li>
+    <li>최소화·최대화·닫기 버튼이 같은 디자인이다</li>
+    <li>로고의 글자 형태와 광택이 장면마다 같다</li>
+    <li>텍스트가 복잡한 배경 위에 직접 놓이지 않았다</li>
+    <li>4:5와 16:9 모두 안전 영역을 지킨다</li>
+  </ul>
+</div>
+
+<div class="checklist-group">
+  <div class="checklist-group-label">모션</div>
+  <ul class="checklist">
+    <li>팝업이 자연스럽게 늘어나며 중앙 피사체를 과도하게 가리지 않는다</li>
+    <li>종료 창이 커서를 정확히 네 번 피한다</li>
+    <li>창이 화면 밖으로 잘리지 않는다</li>
+    <li>장면 전환이 음악의 박자 또는 효과음과 맞는다</li>
+  </ul>
+</div>
+
+<div class="checklist-group">
+  <div class="checklist-group-label">오디오와 출력</div>
+  <ul class="checklist">
+    <li>BGM 하이라이트가 원하는 지점에서 시작한다</li>
+    <li>클릭음과 팝업 효과음이 BGM과 함께 들린다</li>
+    <li>음량이 찢어지거나 지나치게 크지 않다</li>
+    <li>최종 영상에 오디오가 포함되어 있다</li>
+    <li>해상도, 길이, fps, 코덱이 요청과 일치한다</li>
+  </ul>
+</div>
+
+<hr class="divider">
+
+<!-- 9. 자주 생기는 문제 -->
+<div class="sec-hd"><span class="sec-num">09</span><h2>자주 생기는 문제와 해결 문장</h2></div>
+<div class="tbl-wrap">
+  <table>
+    <tr><th>문제</th><th>요청 문장</th></tr>
+    <tr><td>인물이 다른 사람처럼 변함</td><td><strong>"첨부 이미지를 직접 사용하고 얼굴을 재생성하지 말아줘."</strong></td></tr>
+    <tr><td>창 디자인이 장면마다 달라짐</td><td><strong>"기존 장면의 창 컴포넌트를 그대로 재사용해줘."</strong></td></tr>
+    <tr><td>16:9에서 내용이 잘림</td><td><strong>"단순 크롭하지 말고 가로 전용 좌표로 다시 배치해줘."</strong></td></tr>
+    <tr><td>음악 교체 후 효과음이 사라짐</td><td><strong>"BGM만 교체하고 기존 SFX 트랙은 유지해줘."</strong></td></tr>
+    <tr><td>텍스트가 배경에 묻힘</td><td><strong>"텍스트 뒤에 불투명한 창 또는 그라데이션 패널을 넣어줘."</strong></td></tr>
+    <tr><td>팝업이 얼굴을 가림</td><td><strong>"팝업 생성 영역을 중앙 피사체 바깥쪽으로 제한해줘."</strong></td></tr>
+    <tr><td>특정 장면만 바꾸고 싶음</td><td><strong>"해당 구간만 교체하고 나머지 프레임과 오디오는 그대로 유지해줘."</strong></td></tr>
+  </table>
+</div>
+
+<hr class="divider">
+
+<!-- 10. 제작 방식 메모 -->
+<div class="sec-hd"><span class="sec-num">10</span><h2>제작 방식 메모</h2></div>
+<ul class="bullet-list">
+  <li>2D Canvas 기반으로 브라우저, 창, 버튼, 로고, 커서 애니메이션 제작</li>
+  <li>첨부 이미지와 영상을 프레임 안에 직접 합성 (이미지 생성: 미드저니, 영상 생성: 그록)</li>
+  <li>짧은 원본 영상을 이미지 시퀀스로 변환해 안정적으로 재생</li>
+  <li>60fps로 프레임 렌더링 후 FFmpeg로 H.264 인코딩 및 오디오 합성</li>
+  <li>BGM과 SFX를 분리해 교체 가능한 구조로 관리</li>
+  <li>4:5와 16:9에 각각 별도의 레이아웃 좌표 사용</li>
+</ul>
+<div class="callout">AI 영상 생성만으로 전체를 만드는 방식보다, UI와 텍스트처럼 정확성이 중요한 요소를 <strong>코드 기반 모션그래픽으로 만들고 첨부 에셋을 직접 합성</strong>하면 인물과 로고의 일관성을 더 안정적으로 유지할 수 있습니다.</div>
+
+</main>
+
+<script>
+document.querySelectorAll('.copy-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.dataset.target;
+    const pre = document.getElementById(id).querySelector('.prompt-body');
+    navigator.clipboard.writeText(pre.textContent.trim()).then(() => {
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = 'Copy', 1500);
+    });
+  });
+});
+</script>
