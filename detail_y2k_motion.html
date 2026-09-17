@@ -63,6 +63,11 @@ p.body{font-size:.875rem;color:var(--muted);line-height:1.8;margin-bottom:.75rem
 .file-list{font-family:var(--mono);font-size:.8rem;line-height:1.9;color:var(--muted);background:var(--code-bg,#edeae2);border:1px solid var(--border);border-radius:4px;padding:.8rem 1rem;margin:.75rem 0 1.25rem}
 .file-list span{color:var(--accent)}
 
+/* Reference images */
+.ref-img-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.25rem 0}
+.ref-fig{margin:0}
+.ref-fig img{width:100%;border-radius:6px;border:1px solid var(--border);display:block}
+
 /* Checklist */
 .checklist{list-style:none;margin:.5rem 0 1.25rem;padding-left:.25rem}
 .checklist li{font-size:.875rem;color:var(--muted);line-height:1.75;padding:.2rem 0;display:flex;gap:.6rem;align-items:flex-start}
@@ -223,6 +228,14 @@ tr:nth-child(even) td{background:var(--code-bg,#f9f7f4)}
 
 <!-- 3. 간단한 시작 프롬프트 -->
 <div class="sec-hd"><span class="sec-num">03</span><h2>가장 간단한 시작 프롬프트</h2></div>
+<div class="ref-img-row">
+  <figure class="ref-fig">
+    <img src="./images/y2k_ref_01.png" alt="레퍼런스 이미지 예시 1 — 로딩 화면">
+  </figure>
+  <figure class="ref-fig">
+    <img src="./images/y2k_ref_02.png" alt="레퍼런스 이미지 예시 2 — 디지털 드림">
+  </figure>
+</div>
 <p class="body">레퍼런스 이미지를 첨부하고, <strong>닉네임과 메인 키워드만</strong> 바꿔 사용할 수 있는 최소 프롬프트입니다.</p>
 
 <div class="prompt-box" id="p-simple">
