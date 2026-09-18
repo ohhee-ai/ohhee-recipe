@@ -261,14 +261,14 @@ tr:nth-child(even) td{background:var(--code-bg,#f9f7f4)}
 
 <!-- 4. 상세 프롬프트 -->
 <div class="sec-hd"><span class="sec-num">04</span><h2>결과를 더 정확하게 만드는 상세 프롬프트</h2></div>
-<p class="body">에셋 역할, 연출 순서, 디자인 규칙까지 명시한 전체 스펙 프롬프트입니다.</p>
+<p class="body">에셋 역할, 연출 순서, 디자인 규칙까지 명시한 전체 스펙 프롬프트입니다.<br>UI를 참고할 레퍼런스 이미지를 추가하고, 실제 사용될 에셋 이미지를 추가합니다. 갯수는 자유롭게 정할 수 있습니다.</p>
 
 <div class="prompt-box" id="p-detail">
   <div class="prompt-header">
     <span class="prompt-label">Prompt — 상세 버전 / ChatGPT</span>
     <button class="copy-btn" data-target="p-detail">Copy</button>
   </div>
-  <pre class="prompt-body">첨부 에셋을 직접 사용해 [닉네임]의 Y2K 웹페이지형 모션그래픽을 제작해줘.
+  <pre class="prompt-body">첨부 에셋과 레퍼런스 이미지를 활용하여 [닉네임]의 Y2K 웹페이지형 모션그래픽을 제작해줘.
 
 핵심 정보
 - 닉네임/브랜드명: [닉네임]
@@ -279,10 +279,12 @@ tr:nth-child(even) td{background:var(--code-bg,#f9f7f4)}
 - 출력: 4:5 1080×1350 / 16:9 1920×1080 / 60fps / H.264 MP4
 
 에셋 사용
-- 01_main.png: 대표 장면
-- 02_member_a.png, 03_member_b.png: 갤러리 창
-- 04_feature.png: 연결 완료 장면
-- 05_group.png 또는 group_video.mp4: 시작과 메인 웹페이지 장면
+(1-2번은 UI 레퍼런스 이미지, 3번 이후는 실제 화면에 들어갈 에셋 이미지)
+- 01_ref.png, 02_ref.png: Y2K UI 스타일 레퍼런스
+- 03_main.png: 대표 장면
+- 04_member_a.png, 05_member_b.png: 갤러리 창
+- 06_feature.png: 연결 완료 장면
+- 07_group.png 또는 group_video.mp4: 시작과 메인 웹페이지 장면
 - popup_center.mp4: 무한 팝업 장면의 중앙 영상
 - exit_background.mp4: 종료 확인 창 뒤의 영상
 - bgm.mp3: 지정한 하이라이트 구간 사용
