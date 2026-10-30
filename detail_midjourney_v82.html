@@ -69,6 +69,10 @@ hr.divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
 .callout{background:var(--code-bg);border:1px solid var(--border);border-radius:4px;padding:.85rem 1.1rem;font-size:.875rem;color:var(--muted);line-height:1.8;margin:1rem 0}
 .callout strong{color:var(--ink)}
 
+/* Gallery grid (3-col) */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1.25rem 0}
+.gallery-grid img{width:100%;display:block;border-radius:6px;border:1px solid var(--border)}
+
 /* Comparison grid */
 .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.25rem 0}
 .compare-item{}
@@ -188,6 +192,18 @@ hr.divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
     <button class="copy-btn" data-target="p-product">Copy</button>
   </div>
   <pre class="prompt-body">portrait of a young woman wearing [제품명/착용 아이템], [무드 묘사], clean background, high detail, photorealistic --ar 4:5 --v 8.2</pre>
+</div>
+
+<hr class="divider">
+
+<!-- 05 REA 결과 갤러리 -->
+<div class="sec-hd"><span class="sec-num">05</span><h2>REA의 이미지를 첨부하여 다양한 프롬프트로 만들어본 이미지</h2></div>
+<p class="body">완벽하게 인물 일관성이 유지되진 않지만, 헤어 컬러·얼굴형·전반적인 분위기 등 <strong>외모의 방향성</strong>은 비교적 유사하게 이어지는 것을 확인할 수 있습니다. 레퍼런스 이미지가 없을 때보다 훨씬 가까운 결과를 반복적으로 얻을 수 있어, 자신만의 AI 모델을 만들어가는 데 유용한 출발점이 됩니다.</p>
+
+<div class="gallery-grid">
+  <img src="./images/mj_rea_var1.webp" alt="REA 참조 이미지 활용 결과 1">
+  <img src="./images/mj_rea_var2.webp" alt="REA 참조 이미지 활용 결과 2">
+  <img src="./images/mj_rea_var3.webp" alt="REA 참조 이미지 활용 결과 3">
 </div>
 
 </main>
