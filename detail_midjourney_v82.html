@@ -68,6 +68,13 @@ hr.divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
 /* Info callout */
 .callout{background:var(--code-bg);border:1px solid var(--border);border-radius:4px;padding:.85rem 1.1rem;font-size:.875rem;color:var(--muted);line-height:1.8;margin:1rem 0}
 .callout strong{color:var(--ink)}
+
+/* Comparison grid */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.25rem 0}
+.compare-item{}
+.compare-item img{width:100%;display:block;border-radius:6px;border:1px solid var(--border)}
+.compare-label{font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-top:.5rem;text-align:center;letter-spacing:.04em}
+.compare-label strong{color:var(--accent)}
 </style>
 
 <header class="site-header">
@@ -91,6 +98,30 @@ hr.divider{border:none;border-top:1px solid var(--border);margin:2.5rem 0}
 </section>
 
 <main class="content">
+
+<!-- 결과 비교 -->
+<div class="sec-hd"><span class="sec-num">—</span><h2>결과 비교</h2></div>
+
+<div class="prompt-box" id="p-compare">
+  <div class="prompt-header">
+    <span class="prompt-label">사용 프롬프트 / Midjourney v8.2</span>
+    <button class="copy-btn" data-target="p-compare">Copy</button>
+  </div>
+  <pre class="prompt-body">tight beauty and jewelry campaign portrait of an East Asian female model wearing a polished silver sculptural ear cuff and a slender matching ring, face turned three-quarter toward the camera, fingertips resting lightly near her cheek without covering the jewelry, sleek pulled-back hair, clean neutral background, 85mm lens, large diffused softbox from camera left with a narrow rim light catching the metal edges, luminous realistic skin with visible natural texture, soft rose mute makeup, precise highlights, premium cosmetics and jewelry advertising, elegant minimal composition --ar 4:5 --raw --hd</pre>
+</div>
+
+<div class="compare-grid">
+  <div class="compare-item">
+    <img src="./images/mj_result_no_ref.webp" alt="프롬프트만으로 생성한 이미지">
+    <p class="compare-label"><strong>프롬프트만으로 생성</strong></p>
+  </div>
+  <div class="compare-item">
+    <img src="./images/mj_result_with_ref.webp" alt="참조 이미지를 첨부하여 생성한 이미지">
+    <p class="compare-label"><strong>참조 이미지 첨부 후 생성</strong></p>
+  </div>
+</div>
+
+<hr class="divider">
 
 <!-- 01 -->
 <div class="sec-hd"><span class="sec-num">01</span><h2>텍스트 프롬프트만으로는 부족합니다</h2></div>
